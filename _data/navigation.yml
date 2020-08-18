@@ -14,24 +14,40 @@ main:
 posts:
   - title: "Blockchain"
     children:
-      - title: "Bitcoin_Programming"
-        url: /categories/#bitcoin_programming
-      - title: "Ethereum_Programming"
-        url: /categories/#ethereum_programming
-  - title: "Web"
-     children:
-      - title: "Web_Programming"
-        url: /categories/#web_programming
-  - title: "Langauge"
-    children:
-      - title: "javascript"
-        url: /categories/#javascript
-      - title: "nodejs"
-        url: /categories/#nodejs
-  - title: "IOT"
-    url: /categories/#iot
-  - title: "DailyPost"
-    url: /categories/#dailypost
-  - title: "Cryptography"
-    url: /categories/#cryptography
+      - title: "Ethereum"
+        url: /categories/#ethereum
+  - title: "Docker"
+    url: /categories/#docker
+  - title: "Kubernetes(K8S)"
+    url: /categories/#kubernetes
+  - title: "Protocol"
+    url: /categories/#protocol
+  - title: "Post"
+    url: /categories/#post
+  - title: "Etc"
+    url: /categories/#etc
+
+#posts:
+ # - title: "Blockchain"
+  #  children:
+   #   - title: "Bitcoin_Programming"
+    #    url: /categories/#bitcoin_programming
+      #- title: "Ethereum_Programming"
+     #   url: /categories/#ethereum_programming
+  #- title: "Web"
+   #  children:
+    #  - title: "Web_Programming"
+     #   url: /categories/#web_programming
+  #- title: "Langauge"
+   # children:
+    #  - title: "javascript"
+     #   url: /categories/#javascript
+      #- title: "nodejs"
+       # url: /categories/#nodejs
+  #- title: "IOT"
+   # url: /categories/#iot
+  #- title: "DailyPost"
+   # url: /categories/#dailypost
+  #- title: "Cryptography"
+   # url: /categories/#cryptography
 
