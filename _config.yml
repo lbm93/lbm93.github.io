@@ -108,7 +108,7 @@ analytics:
 author:
   name             : "lbm93"
   avatar           : "/assets/images/bio-photo.png"
-  bio              : "Jr.Software Engineer"
+  bio              : "Developer"
   location         : "Seoul, Korea"
   email            : "leebyeongmn@gmail.com"
   links:
@@ -129,7 +129,7 @@ author:
       url: "https://github.com/lbm93"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      url: "https://instagram.com/lbmlmb_93"
+      url: "https://instagram.com/lbmbm_93"
 
 # Site Footer
 footer:
