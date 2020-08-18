@@ -25,9 +25,9 @@ posts:
   - title: "Web"
     url: /categories/#web
   - title: "Language"
-      - title: "Node js"
+      - title: "Nodejs"
         url: /categories/#nodejs
-      - title: "Java Script"
+      - title: "Javascript"
         url: /categories/#javascript
   - title: "Dialy Post"
     url: /categories/#dailypost
