@@ -1,7 +1,7 @@
 # main links
 main:
-  - title: "Archivement"
-    url: /archivement/
+  - title: "Archive"
+    url: /year-archive/
   - title: "Tag"
     url: /tags/
   - title: "Category"
