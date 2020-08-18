@@ -18,11 +18,11 @@ minimal_mistakes_skin    : "air" # "air", "aqua", "contrast", "dark", "dirt", "n
 locale                   : "ko"
 title                    : "Study Notes"
 title_separator          : # "Study"
-name                     : "choi3897"
+name                     : "lbm93"
 description              : "Study Notes"
-url                      : "https://choi3897.github.io" 
+url                      : "https://lbm93.github.io" 
 baseurl                  : # the subpath of your site, e.g. "/blog"
-repository               : "choi3897/choi3897.github.io"
+repository               : "lbm93/lbm93.github.io"
 teaser                   : "/assets/images/500x300.png"
 logo                     : "/assets/images/88x88.png"
 masthead_title           : # overrides the website title displayed in the masthead, use " " for no title
@@ -31,7 +31,7 @@ words_per_minute         : 200
 comments:
   provider               : "disqus" # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "staticman_v2", "utterances", "custom"
   disqus:
-    shortname            : "https-choi3897-github-io" 
+    shortname            : "byeongminlee" 
   discourse:
     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
@@ -106,15 +106,15 @@ analytics:
 
 # Site Author
 author:
-  name             : "choi3897"
+  name             : "lbm93"
   avatar           : "/assets/images/bio-photo.png"
   bio              : "Jr.Software Engineer"
   location         : "Seoul, Korea"
-  email            : "choi2980@gmail.com"
+  email            : "leebyeongmn@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      # url: "mailto:choi2980@gmail.com"
+      # url: "mailto:leebyeongmn@gmail.com"
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
@@ -123,13 +123,13 @@ author:
       # url: "https://twitter.com/"
     - label: "Facebook"
       icon: "fab fa-fw fa-facebook-square"
-      # url: "https://facebook.com/"
+      url: "https://www.facebook.com/leebyeongmin"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/choi3897"
+      url: "https://github.com/lbm93"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
-      # url: "https://instagram.com/"
+      url: "https://instagram.com/lbmlmb_93"
 
 # Site Footer
 footer:
@@ -142,7 +142,7 @@ footer:
       # url:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/choi3897"
+      url: "https://github.com/lbm93"
     - label: "GitLab"
       icon: "fab fa-fw fa-gitlab"
       # url:
