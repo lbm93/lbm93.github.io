@@ -1,0 +1,54 @@
+---
+layout: article
+title: "전자서명 ECDSA"
+date: 2019-10-27 18:00:32 +0900
+categories: [development, cryptography]
+# description: "웹 통신 프로토콜인 URL, HTTP, SMTP, MIME, FTP 을 정리"
+excerpt: "전자서명 ECDSA"
+image:
+  teaser: posts/ssl/ssl.png
+  credit: 
+  creditlink: https://topis.me/48
+  #url to their site or licensing
+locale: "ko_KR"
+# 리플 옵션
+comments: true
+tags:
+- 대칭키
+- 비대칭키
+- 타원곡선
+- RSA
+- SSL
+- Secure
+- 전자서명
+- ECDSA
+---
+{% include toc.html %}
+
+# 전자서명
+전자서명이라 함은, 서명자를 확인하고 서명자가 당해 전자문서에 서명했다는 사실을 나타내는데 이용하려고, 특정 전자문서에 첨부되거나 논리적으로 결합된 전자적 형태의 정보를 말한다.[1]
+
+
+전자 서명의 순서는 다음과 같이 이루어진다.
+
+[그림1]({{ site.url }}/images/img/blockchain-cryptography/digitalsigned.png)[2]
+
+
+Private Key를 이용해서 정보를 암호화한 후 Public Key와 함께 암호화된 정보를 전송한다.   
+암호화된 정보를 받은 상대방은 받은 Public Key로 암호화된 정보를 복호화한다.  
+이렇게 Public Key를 보냄으로써 Public Key가 노출되어 의도적으로 정보가 유출될 수 있지만, 이방식으로 신원을 증명한다.  
+그 이유는 공개키로 암호화된 정보를 풀 수 있다는 것은 개인키로 암호화했다는 말이고 즉, 쌍으로 이루어진 키로만 암호화 복호화가 가능한 공개키 기법으로 상대방의 신원을 확인할 수 있기 때문이다.  
+
+간단하게 정리하자면 다음과 같다,  
+
+- 개인키로 평문을 암호화해 전자서명을 만들어 상대방에게 전달한다.
+
+- 상대방은 보낸 측의 공개키를 이용해 전자서명을 복호화한다.
+
+- 여기서 서명은 SHA256등으로 생성된 Hash값이다.
+
+`이러한 방식의 전자서명은 송신자가 자신의 신원을 증명하기위해 사용되는 방법 중 하나이다.`<br>
+
+# 참고문서
+- [1](https://ko.wikipedia.org/wiki/%EC%A0%84%EC%9E%90%EC%84%9C%EB%AA%85) <br>
+- [2](https://brunch.co.kr/@artiveloper/24)

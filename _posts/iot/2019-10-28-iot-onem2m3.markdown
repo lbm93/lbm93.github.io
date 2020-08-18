@@ -1,0 +1,116 @@
+---
+layout: article
+title: "oneM2M Architecture Model"
+date: 2019-10-28 18:00:32 +0900
+categories: [development, iot]
+# description: "웹 통신 프로토콜인 URL, HTTP, SMTP, MIME, FTP 을 정리"
+excerpt: "oneM2M 모델에 대하여 알아본다."
+image:
+  teaser: posts/onem2m/oneM2M.png
+  credit: oneM2M
+  creditlink: 
+  #url to their site or licensing
+locale: "ko_KR"
+# 리플 옵션
+comments: true
+tags:
+- iot
+- internet of things
+- oneM2M
+- iot 표준
+- Mobius
+- nCube
+---
+{% include toc.html %}
+
+# oneM2M Architecture Model
+oneM2M 워킹 그룹 WG2에서는 oneM2M의 **네트워크 아키텍처**와 **아키텍처**를 구성하는 **엔티티(Entity) 및 공통 서비스 기능(CSF)**과 이를 제공하기 위한 공통 서비스 계층에서의 **레퍼런스 포인트(Reference Point)**를 정의함
+
+---
+
+# General Concepts
+
+![그림1](/images/img/iot-onem2m/3.PNG)
+
+```
+depicts the oneM2M Layered Model for supporting end-to-end (E2E) M2M Services.  
+This layered model comprises three layers: Application Layer, Common Services Layer and the underlying Network Services Layer.
+```
+이 계층화된 모델은 응용 프로그램 계층, 공통 서비스 계층, 네트워크 서비스 계층 세가지 계층으로 구성된다.
+
+
+
+# Architecture Reference Model
+
+![그림1](/images/img/iot-onem2m/4.PNG)
+위의 General Concepts를 참고하여 만들어진 기능 아키텍처입니다.
+각각의 계층별 기능을 설명하겠습니다.
+
+
+**Application Entity (AE) :**
+```
+Application Entity is an entity in the application layer that implements an M2M application service logic.  
+Each application service logic can be resident in a number of M2M nodes and/or more than once on a single M2M node. Each execution instance of an application service logic is termed an "Application Entity" (AE) and is identified with a unique AE-ID (see clause 7.1.2).  
+Examples of the AEs include an instance of a fleet tracking application, a remote blood sugar monitoring application, a power metering application, or a controlling application.
+```
+어플리케이션 엔티티는 End-to-End 사물인터넷 솔루션을 위한 어플리케이션 로직을 제공하고,고유한 AE-ID로 식별된다. 예를 들면, 화물 추적, 원격 모니터링, 원격 검침 및 제어 등
+
+
+**Common Service Entity (CSE) :**
+```
+A Common Services Entity represents an instantiation of a set of "common service functions" of the M2M environments.  
+Such service functions are exposed to other entities through the Mca and Mcc reference points.  
+Reference point Mcn is used for accessing underlying Network Service Entities. Each Common Service Entity is identified with a unique CSE-ID.
+```
+공통 서비스 엔티티는 사물 인터넷의 다양한 어플리케이션 엔티티들이 공통적으로 사용할 수 있는 기능들로 이루어진다. 이러한 기능들은 Mca 및 Mcc Reference point를 통해서 다른 엔티티들에게 노출된다. Mcn Reference Point는 네트워크 서비스 엔티티에 접근하는데 사용된다. 각각의 공통 서비스 엔티티는 고유한 CSE-ID로 식별된다.
+
+
+**Network Service Entity(NSE) :**
+```
+A Network Services Entity provides services from the underlying network to the CSEs. Examples of such services include device management,  
+location services and device triggering. No particular organization of the NSEs is assumed.
+```
+네트워크 서비스 엔티티는 공통 서비스 엔티티에 네트워크 서비스를 제공한다. 이러한 서비스 예로는 장치 관리, 위치 서비스 및 장치 트리거링 등이 있다.  
+ 
+
+# Reference Point
+Reference Point는 여러 종류의 인터페이스를 가지며 이 Reference Point는 CSE가
+제공합니다.  
+
+
+**Mca (M2M Communication with AE) Reference Point :**
+```
+Communication flows between an Application Entity (AE) and a Common Services Entity (CSE) cross the Mca reference point.  
+These flows enable the AE to use the services supported by the CSE, and for the CSE to communicate with the AE
+```
+Mca Reference Point는 AE와 CSE 사이의 통신 흐름에 사용된다.통신 흐름은 AE가 CSE가 지원하는 기능 서비스를 사용하고 CSE가 AE와 통신할 수 있게 한다.  
+
+ 
+**Mcc (M2M Communication With CSE) Reference Point :**
+```
+Communication flows between two Common Services Entities (CSEs) cross the Mcc reference point.   
+These flows enable a CSE to use the services supported by another CSE.
+```
+Mcc Reference Point는 CSE와 CSE간의 통신 흐름에 사용된다.이러한 통신 흐름은 CSE가 다른 CSE에서 지원하는 서비스를 사용할 수 있게 해준다.  
+
+
+**Mcn (M2M Communication With NSE) Reference Point :**
+```
+Communication flows between a Common Services Entity (CSE) and the Network Services Entity (NSE) cross the Mcn reference point.  
+These flows enable a CSE to use the supported services (other than transport and connectivity services) provided by the NSE.
+```
+Mcn Reference Point는 CSE와 NSEO 간의 통신 흐름에 사용된다. 이러한 통신 흐름은 CSE가 NSE에서 제공하는 지원되는 서비스(전송 및 연결 서비스 말고도 여러 기능)를 사용 할 수 있다.  
+
+
+**Mcc’ (M2M Communication With CSE of Different M2M Service Provider) Reference Point :**
+```
+Communication flows between two Common Services Entities (CSEs) in Infrastructure Nodes  
+(IN) that are oneM2M compliant and that resides in different M2M SP domains cross the Mcc' reference point.  
+These flows enable a CSE of an IN residing in the Infrastructure Domain of an M2M Service Provider to communicate with a CSE of another IN residing in the Infrastructure Domain of another M2M Service Provider to use its supported services, and vice versa.  
+Mcc' extends the reachability of services offered over the Mcc reference point, or a subset thereof.The trigger for these communication flows may be initiated elsewhere in the oneM2M network.
+```
+Mcc’ Reference Point는 oneM2M을 준수하고 서로 다른 Infrastructure Domain에 상주하는 CSE 사이의 통신 흐름에 사용된다. 이러한 흐름은 M2M 서비스 공급자의 Infrastructure Domain에 상주하는 IN-CSE는 다른 M2M 서비스 공급자의 Infrastructure Domain에 상주하는 IN-CSE와 통신하여 해당 서비스를 사용할 수 있다.
+
+
+# 참고문헌
+- [IoT 오픈 플랫폼 기반 제품 서비스 개발을 위한 IoT와 oneM2M의 이해](http://www.iotocean.org/main/)

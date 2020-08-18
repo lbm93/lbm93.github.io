@@ -1,0 +1,84 @@
+---
+layout: article
+title: "Geth 환경설정 1탄"
+date: 2019-11-28 18:00:32 +0900
+categories: [development, ethereum-programming]
+# description: 
+excerpt: "Ethereum 클라이언트 중 Geth의 설치 방법을 알아본다."
+image:
+  teaser: posts/blockchain/ethereum.png
+  credit: 
+  creditlink: 
+  #url to their site or licensing
+locale: "ko_KR"
+# 리플 옵션
+comments: true
+tags:
+- blockchain
+- 블록체인
+- blockchain client
+- 블록체인 클라이언트
+- geth
+- 게스
+- Geth 환경설정
+- solidity
+- 솔리디티
+- smartcontract
+- 스마트컨트랙트
+
+---
+{% include toc.html %}
+
+# 환경설정 1탄(Geth설치)
+Ethereum Client중에 go언어로 개발된 Geth(Go Ethereum)을 설치하는 방법에 대하여 알아봅니다.
+
+---
+
+# 개발 환경
+제 개발환경은 다음과 같고 앞으로도 이 개발환경으로 개발을 진행합니다.  
+
+|PC|Ethereum Clinet|
+|:---|:---|
+|Ubuntu 16.04 LTS|Geth 1.9.8-stable|
+
+
+# Ethereum Client 종류
+Ethereum Client는 다양한 언어로 만들어져 다양한 Client가 존재합니다. 바로 아래 그림은 Client의 종류를 보여줍니다.  
+
+![그림](/images/img/blockchain-ethereum/환경설정/client종류.png)
+
+우리는 여기서 Go 언어로 개발된 Geth를 사용합니다. 이제 설치를 진행해 봅시다.  
+
+
+# Geth 설치
+
+### PPA 패키지 설치
+Geth는 외부에 있는 ethereum 패키지에 있으므로 ethereum 패키지를 불러옵니다.  
+
+> %sudo apt-get install software-properties-common
+
+> %sudo add-apt-repository -y ppa:ethereum/ethereum
+
+> %sudo apt-get update
+
+> %sudo apt-get upgrade
+
+우분투 패키지들은 업데이트가 자주 되기 때문에 PPA로 최신 패키지 설치가 쉽습니다. 이제 gethe가 있는 저장소를 설정했으니 설치합시다.  
+
+### Geth Client 설치
+다음 명령어로 get client를 설치합니다.
+
+> %sudo apt-get install ethereum
+
+> %sudo apt-get update
+
+설치가 완료 되었으면 version을 확인해 봅시다.  
+
+> %geth version
+
+![그림](/images/img/blockchain-ethereum/환경설정/version확인.PNG)
+
+---
+
+# 참고문헌
+- <https://github.com/ethereum/go-ethereum/wiki/Installation-Instructions-for-Ubuntu>

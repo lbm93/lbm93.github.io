@@ -1,0 +1,150 @@
+---
+layout: article
+title: "모듈화"
+date: 2019-11-07 18:00:32 +0900
+categories: [development, nodejs]
+# description: "웹 통신 프로토콜인 URL, HTTP, SMTP, MIME, FTP 을 정리"
+excerpt: "모듈화"
+image:
+  teaser: posts/nodejs/nodejs.PNG
+  credit: nodejs
+  creditlink: https://nodejs.org/en/
+  #url to their site or licensing
+locale: "ko_KR"
+# 리플 옵션
+comments: true
+tags:
+- web protocols
+- web developer
+- web development basic
+- 웹 개발 기초
+- 웹 개발자
+- 웹 개발자를 위한
+- 웹 개발자를 위한 웹 프로토콜
+- 웹 프로토콜
+- HTTP
+- MIME
+- SMTP
+- URL
+- javascript
+- 자바스크립트
+- nodejs
+- node.js
+---
+{% include toc.html %}
+
+# 모듈화
+하나의 함수안에 모든 기능을 넣는 것보다 기능별로 여러 개의 함수로 나눈 후 필요한 함수만 가져다 사용하면 다른 곳에서도 이 함수를 재사용할 수 있기 때문에 훨씬 효율적으로 프로그램을 만들 수 있다. 그렇기 때문에 기능별로 모듈화하는 과정이 필요하다. 다음 그림은 파일 내용을 확인하는 프로그램의 코드를 각각의 파일에 나누어 넣어 모듈화하는 과정을 보여준다.  
+
+![그림]({{ site.url }}/images/img/language-nodejs/module1.PNG) 
+
+`메인 파일의 코드 중에서 독립적인 기능은 별도 파일로 분리할 수 있고, 메인 파일에서는 전체적인 실행 순서나 흐름만을 제어한다.` `이렇게 분리된 파일을 노드에서는 모듈이라고 부른다.` 모듈이란 별도의 파일로 분리된 독립 기능의 모음이라서 모듈을 만들어 놓으면 다른 파일에서 모듈을 불러와 사용할 수 있다.
+
+---
+
+# 모듈화 방법
+`각각의 기능을 분리시킬 때는 단순히 별도의 파일에 코드를 나누어 놓는다고 끝나는 것은 아니다. 분리되어 있는 모듈 파일을 불러와서 사용할 수 있는 방법도 함께 만들어 주어야 한다.` 노드는 Commonjs의 표준 스펙을 따라 모듈을 사용할 수 있게한다. 이 과정에서 `exports 전역 객체`를 사용한다.
+
+
+![그림]({{ site.url }}/images/img/language-nodejs/module2.PNG) 
+
+위 그림이 바로 exports 전역 객체를 사용하는 예이다.   
+
+마치 c언어에서 헤더파일에 함수의 프로토타입을 선언해두는거와 비슷한거 같다.    
+
+위의 그림에서는 exports 전역 객체를 사용해 exports 객체에 함수를 하나하나 추가했다.    
+
+하지만 이렇게하지 않고 하나의 객체를 만들어 객체안에 여러가지 프로퍼티를 가지게 한다음 그 객체를 불러올 수 있게 끔 하는 module.exports도 있다.  
+  
+`즉, 모듈화를 하는 방법에는 exports, module.exports 두가지 방법이 있는 것이다.`
+
+![그림]({{ site.url }}/images/img/language-nodejs/module3.PNG) 
+
+위 그림을 보면 바로 이해가 될 것이다.  
+
+
+# 계산기 모듈화 해보기
+
+```javascript
+let calc = {};
+calc.add = (a,b) => (a+b);
+
+console.log(`모듈로 분리하기 전 - calc.add 함수 호출 결과 : ${calc.add(10,10)}`);
+```
+![그림]({{ site.url }}/images/img/language-nodejs/module4.PNG) 
+
+위 코드는 더하기 기능을 분리하기 이전의 소스코드이다. 이제 이 더하기 기능을 따로 분리해보자.  
+
+---
+
+* calc.js파일 만들어 exports 전역 객체로 함수 등록
+
+```javascript
+exports.add = (a,b) => (a + b);
+```
+
+* main.js파일 만들어 calc 파일 불러와 함수 사용하기
+
+```javascript
+const calc = require('./calc');
+console.log(`모듈로 분리한 후 -calc.add 함수 호출 결과 : ${calc.add(10,10)}`);
+```
+
+![그림]({{ site.url }}/images/img/language-nodejs/module5.PNG) 
+
+이런식으로 내가 직접 기능을 파일로 구분해 모듈화해 불러와 사용할 수 있다.
+
+마찬가지로 nodejs의 내장 module들도 다 이런식으로 불러와서 사용하는 것이다.  
+
+
+지금 까지 학습한 내용으로 main파일에서 calc파일로 이벤트를 던져 처리하게끔 하는 코드를 작성해보았다.  
+
+* calc.js
+
+```javascript
+const util = require('util');
+const EventEmitter = require('events').EventEmitter;
+
+const Calc = function(){
+    let self = this;
+
+    //Calc는 EventEmitter를 상속 받았음으로 on()메서드 사용 가능
+    this.on('stop', () => {
+        console.log('Calc에 stop event 전달됨');
+    });
+};
+
+//util객체의 inherits는 상속을 해주는 기능, Calc에게 EventEmitter를 상속
+util.inherits(Calc, EventEmitter);
+
+//Calc객체의 프로토타입 함수로 add를 등록
+Calc.prototype.add = (a,b) => (a+b);
+
+//Calc객체를 가져가 사용할 수 있도록 함
+module.exports = Calc;
+module.exports.title = 'caculator';
+```
+
+* main.js
+
+```javascript
+//분리해놓은 Calc 파일을 불러옴
+const Calc = require('./calc');
+
+//Calc객체의 인스턴스 생성
+const calc = new Calc();
+
+//Calc인스턴스에 stop이란 이벤트를 전달
+calc.emit('stop');
+
+console.log(`${Calc.title}에 stop 이벤트를 전달`);
+
+console.log(`calc의 add() 메서드 호출 10 + 10 = ${calc.add(10,10)}`);
+```
+![그림]({{ site.url }}/images/img/language-nodejs/module6.PNG) 
+
+---
+
+# 참고문헌
+- *Do it! Node.js 프로그래밍*
+

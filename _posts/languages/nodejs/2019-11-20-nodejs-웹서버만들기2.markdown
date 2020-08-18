@@ -1,0 +1,181 @@
+---
+layout: article
+title: "Web Server 만들기 2탄"
+date: 2019-11-20 18:00:32 +0900
+categories: [development, nodejs]
+# description: "웹 통신 프로토콜인 URL, HTTP, SMTP, MIME, FTP 을 정리"
+excerpt: "Web Server 만들기 2탄"
+image:
+  teaser: posts/nodejs/nodejs.PNG
+  credit: nodejs
+  creditlink: https://nodejs.org/en/
+  #url to their site or licensing
+locale: "ko_KR"
+# 리플 옵션
+comments: true
+tags:
+- web protocols
+- web developer
+- web development basic
+- 웹 개발 기초
+- 웹 개발자
+- 웹 개발자를 위한
+- 웹 개발자를 위한 웹 프로토콜
+- 웹 프로토콜
+- HTTP
+- MIME
+- SMTP
+- URL
+- javascript
+- 자바스크립트
+- nodejs
+- node.js
+---
+{% include toc.html %}
+
+# 웹서버 만들기 2탄
+이번 포스트에서는 클라이언트에서 요청이오면 응답하는 방식을 최소한으로 간단하게 하는 방법들을 살펴본다.
+
+---
+
+# 파일 스트림으로 읽어 보내기
+지금까지 파일을 읽어 응답을 보내는 과정을 코드로 만들어봤다. 이 과정을 간단하게 하는 방법은 파이프를 쓰면된다. 파일은 스트림 객체로 읽어 들일 수 있고, 웹 서버의 응답 객체도 스트림으로 데이터를 전송할 수 있기 때문에 두 개의 스트림은 파이프로 서로 연결할 수 있다. `다시 말해 파일을 스트림 객체로 읽어 들인 후 pipe()메소드로 응답 객체와 연결하면 별다른 코드 없이도 파일에 응답을 보낼 수 있다.`
+
+```javascript
+server.on('request', (req, res)=>{
+    console.log(`클라이언트 요청이 들어왔다.`);
+
+    let filename = 'test.jpg';
+    let infile = fs.createReadStream(filename, {flag:'r'});
+
+    infile.pipe(res);
+})
+```
+
+
+# 파일을 버퍼에 담아 두고 일부분만 읽어 응답 보내기
+이번에는 파일을 버퍼에 담아 일정 크기만큼 읽어 응답을 보내는 방법에 대하여 알아본다. `스트림에서 파일을 읽을 때 버퍼의 크기를 정하면 파일을 버퍼 크기만큼 씩 읽어 응답할 수 있다.` 그런다음 마지막에 end() 메소드를 호출하여 응답으로 전송할 수 있다.
+
+```javascript
+server.on('request', (req,res)=>{
+    console.log('클라이언트 요청이 들어왔다.');
+
+    let filename = 'test.jpg'
+    let infile = fs.createReadStream(filename, {flag: 'r'});
+    let filelength = 0;
+    let curlength = 0;
+
+    fs.stat(filename, (err,stats)=>{
+        filelength = stats.size;
+    });
+
+    //헤더 쓰기
+    res.writeHead(200, {"Content-Type": "image/jpg"});
+
+    //파일 내용을 스트림에서 읽어 본문 쓰기
+    infile.on('readable', ()=>{
+        let chunk;
+        while(null !== (chunk = infile.read())){
+            console.log(`읽어 들인 데이터 크기 ${chunk.length}`);
+            curlength += chunk.length;
+            res.write(chunk, 'utf8', (err)=>{
+                console.log(`파일 부분 쓰기 완료 : ${curlength}, 파일 크기 : ${filelength}`);
+                if(curlength >= filelength){
+                    res.end();
+                }    
+            })
+        }
+    })
+})
+```
+위 소스코드를 보면 클라이언트로부터 요청이 발생하면 파일의 정보를 볼 수 있는 stat 메서드를 이용해 파일의 길이를 구한다.  
+그리고 응답할 타입을 정하고 파일이 읽기가 가능하다면 이벤트를 발생해 파일을 읽어 들인다. 이때 읽어들일때는 fs 모듈의 read메서드를 이용해
+정해진크기만큼만 읽어들이기 때문에 한번에 다 못읽어 여러차례 읽어들이게된다. 결과는 다음과 같다.
+
+![그림]({{ site.url }}/images/img/language-nodejs/server1.PNG)
+
+
+# 서버에서 다른 웹 사이트의 데이터를 가져와 응답하기
+이번과정에서는 HTTP 클라이언트 역할을 하는 클라이언트를 작성해보자. HTTP클라이언트는 GET 방식과 POST 방식으로 다른 웹서버에 데이터를 요청할 수 있다.
+
+
+# GET과 POST가 무엇인가?
+웹 서버에 요청을 보내는 방식은 GET,POST,PUT,DELETE등이 있다. 인터넷 표준으로 정해 둔 이러한 요청 방식을 메소드라고 부른다. HTTP 요청 포맷을 보면 크게 헤더(Header)와 본문(Body) 부분으로 나뉘는데 GET 방식은 헤더 부분에 요청 정보들을 넣어 보내고 POST 방식은 본문 부분에 요청 정보를 넣어 보낸다. 이 두가지 방식은 기능상으로는 요청 정보를 보내는건 같지만 보안 등의 이슈가 있을땐 GET보단 POST를 사용한다.
+
+
+# GET방식으로 Request를 보내는 HTTP 클라이언트
+
+```javascript
+const http = require('http');
+
+const options ={
+    host : 'www.google.com',
+    port : 80,
+    path:'/'
+};
+
+const req = http.get(options, (res)=>{
+    //응답처리
+    let resData = '';
+    res.on('data', (chunk)=>{
+        resData += chunk;
+    });
+
+    res.on('end', ()=>{
+        console.log(resData);
+    });
+});
+
+req.on('error', (err)=>{
+    console.log("오류 발생 :" + err.message);
+});
+```
+위 코드는 간단하다 options에 요청할 서버의 정보를 적고 http 모듈의 get메소드를 이용해 요청을 보낸다. 서버가 요청에 응답한다면 get요청 메서드의 파라미터에 있는 콜백함수의 파라미터 res에 응답이 전달된다. 그럼 이 res의 이벤트를 등록해두어 서버로부터 받은 응답이 어떤것인지 확인하고 해당 이벤트를 처리하게 된다.
+
+
+
+# POST방식으로 Request를 보내는 HTTP 클라이언트
+
+```javascript
+const http = require('http');
+
+const option = {
+    host : 'www.google.com',
+    port : 80,
+    method : 'POST',
+    path : '/',
+    headers :{}
+};
+
+let resData = '';
+const req = http.request(option, (res)=>{
+    //응답처리
+    res.on('data', (chunk)=>{
+        resData += chunk;
+    });
+
+    res.on('end', ()=>{
+        console.log(resData);
+    });
+});
+
+option.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+req.data = "q=actor";
+option.headers['Content-Type'] = req.data.length;
+
+req.on('err', (err)=>{
+    console.log("오류 발생 :" + err.message);
+});
+
+//요청 전송
+req.write(req.data);
+req.end();
+```
+POST방식은 http모듈의 request()메서드를 이용하면 된다.
+
+---
+
+# 참고문헌
+- *Do it! Node.js 프로그래밍*
+
+

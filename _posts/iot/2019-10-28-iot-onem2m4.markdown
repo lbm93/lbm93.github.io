@@ -1,0 +1,101 @@
+---
+layout: article
+title: "oneM2M Architecture Aspect"
+date: 2019-10-28 18:00:32 +0900
+categories: [development, iot]
+# description: "웹 통신 프로토콜인 URL, HTTP, SMTP, MIME, FTP 을 정리"
+excerpt: "oneM2M를 구성하는 여러가지 Node들을 알아본다."
+image:
+  teaser: posts/onem2m/oneM2M.png
+  credit: oneM2M
+  creditlink: 
+  #url to their site or licensing
+locale: "ko_KR"
+# 리플 옵션
+comments: true
+tags:
+- iot
+- internet of things
+- oneM2M
+- iot 표준
+- Mobius
+- nCube
+---
+{% include toc.html %}
+
+# Configurations Supported by oneM2M Architecture
+![그림1](/images/img/iot-onem2m/5.PNG)
+위 그림은 oneM2M의 전체적인 구조를 보여줍니다.  
+보시면 각각의 상자를 노드라고 부릅니다. oneM2M에서 노드는 다음과 같이 의미합니다.
+
+---
+
+# Nodes
+Node는 oneM2M 시스템에서 개별적으로 식별 할 수 있는 논리적인 Entity이다.  
+Node는 두가지 node로 나누어진다.  
+
+```
+CSE를 포함하는 노드: CSE를 포함하고 0개 이상의 AE가 포함된 논리적인 Entity  
+CSE를 포함하지 않는 노드 : CSE를 포함하지 않고 0개 이상의 AE가 포함된 논리적인 Entity 
+```  
+  
+그리고 각각의 노드를 알아 보겠습니다.
+
+**Application Service Node (ASN) :**
+```
+An ASN is a Node that contains one CSE and contains at least one Application Entity (AE).  
+There may be zero or more ASNs in the Field Domain of the oneM2M System.  
+The CSE in an ASN communicates over the Mcc reference point with one CSE residing in a MN or in an IN.  
+An AE in an ASN communicates over the Mca reference point with the CSE residing in the same ASN.  
+An ASN communicates over Mcn with NSEs.  
+Example of physical mapping: an ASN could reside in an M2M Device
+```
+  
+ASN은 하나의 CSE를 포함하고 0개 이상의 AE를 포함하는 노드이다. oneM2M 시스템의 Field Domain에는 0개 이상의 ASN이 있을 수 있다. ASN의 CSE는 Mcc Reference Point를 통해 MN-CSE 혹은 IN-CSE와 통신한다. ASN의 AE는 Mca Reference Point를 통해 동일 한 ASN에 있는 SCE와 통신한다. ASN은 Mcn Reference Point를 통해 NSE와 통신한다.
+  
+  
+**Application Dedicated Node (ADN) :**
+```
+An ADN is a Node that contains at least one AE and does not contain a CSE.  
+There may be zero or more ADNs in the Field Domain of the oneM2M System.  
+An AE in the ADN communicates over the Mca reference point with a CSE residing in a MN or in an IN.  
+Example of physical mapping: an Application Dedicated Node could reside in a constrained M2M Device.
+```
+  
+
+AND은 하나 이상의 AE를 포함하고 CSE를 포함하지 않는 노드이다. oneM2M 시스템의 Field Domain에 0개 이상의 ADN이 있을 수 있다. ADN의 AE는 Mca Reference Point를 통해 MN-CSE 혹은 IN-CSE와 통신한다.
+  
+  
+**Middle Node (MN) :**
+```
+A MN is a Node that contains one CSE and contains zero or more AEs.  
+There may be zero or more MNs in the Field Domain of the oneM2M System.  
+The CSE in a MN communicates over the Mcc reference point with one CSE residing in a MN or in an IN and with one or more other CSEs residing in MNs or in ASNs.In addition, the CSE in the MN can communicate over the Mca reference point with AEs residing in the same MN or residing in an ADN.
+A CSE in a MN communicates over Mcn with NSEs.Example of physical mapping: a MN could reside in an M2M Gateway
+```
+  
+MN은 하나의 CSE를 포함하고 0개 이상의 AE를 포함하는 노드이다. oneM2M 시스템의 Field Domain에는 0개 이상의 MN이 있을 수 있다.MN의 CSE는 Mcc Reference Point를 통해 MN-CSE 혹은 IN-CSE 혹은 ASN-CSE와 통신한다. MN-CSE는 Mcn Reference Point를 통해 동일한 MN에 있거나 AND에 있는 AE와 통신한다.
+  
+  
+**Infrastructure Node (IN) :**
+```
+An IN is a Node that contains one CSE and contains zero or more AEs. 
+There is exactly one IN in the Infrastructure Domain per oneM2M Service Provider.  
+A CSE in an IN may contain CSE functions not applicable to other node types.  
+The CSE in the IN communicates over the Mcc reference point with one or more CSEs residing in MN(s) and/or ASN(s).  
+The CSE in the IN communicates over the Mca reference point with one or more AEs residing in the same IN or residing in an ADN.  
+The CSE in the IN communicates over the Mcn reference point with NSEs, and over the Mcc' reference point with CSEs residing in the INs of other M2M Service Providers.Example of physical mapping: an IN could reside in an M2M Service Infrastructure
+```
+IN은 하나의 CSE를 포함하고 0개 이상의 AE를 포함한다. 하나의 M2M 서비스 제공자 당 Infrastructure Domain에는 정확히 하나의 IN이 있다. IN-CSE는 다른 노드 유형에 적용할 수 없는 CSE 기능을 포함한다. IN-CSE는 Mcc Reference Point를 통해 MN-CSE(s) 또는 ASN-CSE(s)와 통신한다. IN-CSE는 Mca Reference Point를 통해 동일한 IN에 있거나 AND에 있는 하나이 상의 AE와 통신한다. IN-CSE는 Mcn Reference Point를 통해 NSE및 Mcc Reference Point를 통해 다른 M2M 서비스 제공 자의 IN-CSE와 통신한다. 
+  
+  
+**Non-oneM2M Node (NoDN) :**
+```
+A non-oneM2M Node is a Node that does not contain oneM2M Entities (neither AEs nor CSEs).  
+Such Nodes represent devices attached to the oneM2M system for interworking purposes, including management.A Non-oneM2M Node communicates (as shown by dotted lines in figure 6.1-1) with the oneM2M System according to annex F
+```
+None-oneM2M Node는 oneM2M Entity(AE 혹은 CSE)를 포함하지 않는 노드이다. 이러한 노드는 관리를 포함하여 상호 연동 목적으로 oneM2M 시스템에 연결된 장치를 나타낸다.
+
+
+# 참고문헌
+- [IoT 오픈 플랫폼 기반 제품 서비스 개발을 위한 IoT와 oneM2M의 이해](http://www.iotocean.org/main/)

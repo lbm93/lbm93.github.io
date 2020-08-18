@@ -1,0 +1,60 @@
+---
+layout: article
+title: "oneM2M 표준의 이해"
+date: 2019-10-28 18:00:32 +0900
+categories: [development, iot]
+# description: "웹 통신 프로토콜인 URL, HTTP, SMTP, MIME, FTP 을 정리"
+excerpt: "oneM2M이 뭔지 알아보기 1탄"
+image:
+  teaser: posts/onem2m/oneM2M.png
+  credit: oneM2M
+  creditlink: 
+  #url to their site or licensing
+locale: "ko_KR"
+# 리플 옵션
+comments: true
+tags:
+- iot
+- internet of things
+- oneM2M
+- iot 표준
+- Mobius
+- nCube
+---
+{% include toc.html %}
+
+# oneM2M이란?
+oneM2M은 에너지, 교통, 국방 공공서비스 등 산업별로 종속적이고 폐쇄적으로 운영되는, 파편화된 서비스 플랫폼 구조를 벗어나 응용 서비스 인프라(플랫폼) 환경을 통합하고 공유하기 위한 사물 인터넷 공동 서비스 플랫폼 개발을 위해 발족된 표준화 단체이다.
+
+![그림1](/images/img/iot-onem2m/1.PNG)
+
+위의 그림을 보시면 종래 사물인터넷 서비스들은 각각의 애플리케이션이 구동되기 위한 각각의 서버 플랫폼이 존재 했었지만 `oneM2M 기반 서버 플랫폼을 만들고나서는 하나의 서버 플랫폼에서 여러 개의 서비스 애플리케이션이 구동하게 된다.`
+
+---
+
+# oneM2M의 기술 워킹 그룹
+oneM2M의 기술 워킹 그룹은 6개로 나뉘어 있습니다.
+
+![그림2](/images/img/iot-onem2m/2.PNG)
+
+- 요구 사항을 다루는 Requirement(WG1)
+
+- 시스템 구조를 다루는 Architecture(WG2)
+
+- 프로토콜과 관련한 Protocol(WG3)
+
+- 보안 관련 Security(WG4)
+
+- 장치 관리 및 추상화, 시멘틱과 관련된 Management, Abstraction and Sementics(WG5)
+
+- 태스킹 규격을 위한 Test(WG6)
+
+이러한 워킹 그룹으로 인해, 요구사항, 용어 정의, 아키텍처 등 10개의 표준 규격을 포함한 Release1부터 3,4를 발표하고 표준 확산에 주력 중이다.
+
+ 
+`즉, 이 그룹 구성은 표준을 규격하고 표준 확산을 위해 분야별로 그룹을 나눈 것이다.`
+
+
+
+# 참고문헌
+- [IoT 오픈 플랫폼 기반 제품 서비스 개발을 위한 IoT와 oneM2M의 이해](http://www.iotocean.org/main/)

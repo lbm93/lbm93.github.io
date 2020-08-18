@@ -1,0 +1,124 @@
+---
+layout: article
+title: "Geth 환경설정 2탄"
+date: 2019-11-28 18:00:32 +0900
+categories: [development, ethereum-programming]
+# description: 
+excerpt: "Geth의 초기 genesis block 설정을 알아본다."
+image:
+  teaser: posts/blockchain/ethereum.png
+  credit: 
+  creditlink: 
+  #url to their site or licensing
+locale: "ko_KR"
+# 리플 옵션
+comments: true
+tags:
+- blockchain
+- 블록체인
+- blockchain client
+- 블록체인 클라이언트
+- geth
+- 게스
+- Geth 환경설정
+- solidity
+- 솔리디티
+- smartcontract
+- 스마트컨트랙트
+---
+{% include toc.html %}
+
+# 환경설정 2탄(Geth 최초환경설정)
+Geth설치를 끝내고 이제 Geth를 시작하기 앞서 하나의 node로서 동작할 준비를 합니다.
+
+---
+
+# Make Datadir
+하나의 node로 동작할 디렉터리를하나 만들어 줍니다. 하나의 이더리움 네트워크에서 여러개의 노드를 실행하고 싶으면 여러 디렉터리를 만들어 연결시켜주면 됩니다.  
+
+> %mkdir ~/[Datadir 이름]
+
+저는 밑의 그림처럼 경로를 만들었습니다.
+
+![그림](/images/img/blockchain-ethereum/환경설정/경로.PNG)
+
+이제 노드로써 ethereum network에 참여하기위한 준비를 합니다.  
+
+  
+# Genesis Block 생성
+private network로 구성할꺼라 genesis block을 설정해줘야 합니다. 이 genesis 설정에 따라 private인지 public인지 설정할 수 있습니다.  
+
+> %vim genesis
+
+이제 밑의 내용처럼 적어줍니다
+
+```json
+{
+	"config": {
+		"chainId": 201951281022,
+		"homesteadBlock": 0,
+		"eip150Block": 0,
+		"eip155Block": 0
+	},
+	"alloc"			: {},
+	"coinbase"		: "0x0000000000000000000000000000000000000000",
+	"difficulty"	: "0x20000",
+	"extraData"		: "",
+	"gasLimit"		: "0x2fefd8",
+	"nonce"			: "0x0000000000000042",
+	"mixhash"		: "0x0000000000000000000000000000000000000000000000000000000000000000",
+	"parentHash"	: "0x0000000000000000000000000000000000000000000000000000000000000000",
+	"timestamp"		: "0x00"
+}
+```
+
+위의 옵션들를 간단하게 설명하겠습니다.  
+
+- config : BlockChain 설정
+
+- chainId : Chain을 유일하게 식별하는 값으로 Relpay Attack을 방지하기 위해 사용함, Prvate으로 구성하려면 자신만 아는 숫자를 적어주면 됌
+
+- homesteadBlock : 이더리움 두번째 release 버전, 초기 값을 0으로 set하면 Homestead 버전을 사용
+
+이외의 옵션들은 밑의 링크를 참고하세요.  
+
+
+
+
+# Geth 초기화
+앞서 작성한 genesis를 초기화시켜 노드로 동작하게 합니다.  
+
+> %geth --datadir . init genesis
+
+> %tree 
+
+그럼 디렉터리 구조를 트리로 보여줍니다. 밑의 그림처럼 못보던 파일들이 생겼습니다.  
+
+![그림](/images/img/blockchain-ethereum/환경설정/tree.PNG)
+
+
+# Geth 구동
+Geth를 구동합니다. Geth 구동시 옵션은 밑의 참고자료를 참조하세요.
+
+> %geth --datadir . --networkid 201951281022 --rpc --rpcport 8545 --rpccorsdomain "*" --rpcapi "db,eth,net,web3,personal" --nodiscover console
+
+--networkid 201951281022 : 네트워크 식별자, 저는 201951281022라고 했네요 
+--nodiscover : 생성자의 노드를 다른 노드에서 검색할 수 없게 하는 옵션
+--maxpeers 0 : 생성자의 노드에 연결할 수 있는 노드의 수를 지정. 0을 지정하면 다른 노드와 연결하지 않는다.
+--datadir . : 데이터 디렉터리를 지정한다.
+consol : 대화형 자바스크립트 콘솔을 기동 한다.
+2 >> ./geth.log : 로그 파일을 만들 때 사용할 옵션으로 에러를 해당 경로의 파일에 저장한다.
+
+
+정상 작동하면 다음 그림처럼 나옵니다.  
+
+
+![그림](/images/img/blockchain-ethereum/환경설정/정상작동.PNG)
+
+---
+
+# 참고문헌
+- <https://steemit.com/kr/@mossid/5kv1hu>
+- <https://medium.com/taipei-ethereum-meetup/beginners-guide-to-ethereum-3-explain-the-genesis-file-and-use-it-to-customize-your-blockchain-552eb6265145>
+- <https://www.asynclabs.co/blog/params-in-ethereum-genesis-block-explained/>
+- <https://arvanaghi.com/blog/explaining-the-genesis-block-in-ethereum/>

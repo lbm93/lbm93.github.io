@@ -1,0 +1,46 @@
+---
+layout: article
+title: "oneM2M Release1,2"
+date: 2019-10-28 18:00:32 +0900
+categories: [development, iot]
+# description: "웹 통신 프로토콜인 URL, HTTP, SMTP, MIME, FTP 을 정리"
+excerpt: "oneM2M의 Release 버전들을 알아본다."
+image:
+  teaser: posts/onem2m/oneM2M.png
+  credit: oneM2M
+  creditlink: 
+  #url to their site or licensing
+locale: "ko_KR"
+# 리플 옵션
+comments: true
+tags:
+- iot
+- internet of things
+- oneM2M
+- iot 표준
+- Mobius
+- nCube
+---
+{% include toc.html %}
+
+# oneM2M Release1
+- Release1 에서는 oneM2M 플랫폼이 제공하는 기능을 공통 서비스 기능 (CSF:Common Service Function)으로 정의함.
+
+- 공통 서비스 기능은 IOT 서비스 애플리케이션에서 자주 사용되는 기능을 정의한 것으로 데이터 저장/공유, 장치 관리,그룹 관리, 구독/통지, 위치 정보, 과금 등의 기능을 포함하여 보안 기능은 기본적인 인증, 접근제어 등의 기능을 제공한다
+
+- onM2M의 프로토콜 메시지는 CoAP, HTTP, MQTT 프로토콜 메시지를 통해 전송되고 특정 프로토콜 메시지에 종속성을 가지지 않도록 Protocol binding을 지원하도록 하였다.  
+  
+# oneM2M Release2
+
+- Release2 에서는 1에 이어 다양한 Industry IoT 플랫폼 및 네트워크 연동이 주목적이다.
+
+- IoT 연동으로는 AllJoyn, OCF, Light Weight M2M 기술과의 연동 규격을 제공한다.
+
+
+- 네트워크 연동으로는 3GPP Rel-13 네트워크와 연동을 위한 트래픽 패턴 설정(Traffic pattern Configuration) 기능을정의하고 있으며 Release 3에 모니터링 등의 연동 기능을 추가하기 위한 기술 보고서 작업을 계속하고 있다.
+
+- 프로토콜 바인딩은 동시 송수신(Full-Duplex)을 지원하는 Web Socket이 추가되었다.
+
+
+# 참고문헌
+- [IoT 오픈 플랫폼 기반 제품 서비스 개발을 위한 IoT와 oneM2M의 이해](http://www.iotocean.org/main/)
