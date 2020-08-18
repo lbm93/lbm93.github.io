@@ -24,5 +24,11 @@ posts:
     url: /categories/#iot
   - title: "Web"
     url: /categories/#web
+  - title: "Languages"
+    children:
+      - title: "Nodejs"
+        url: /categories/#nodejs
+      - title: "Javascript"
+        url: /categories/#javascript
   - title: "Dialy Post"
     url: /categories/#dailypost
