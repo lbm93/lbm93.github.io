@@ -16,6 +16,8 @@ posts:
     children:
       - title: "Bitcoin"
         url: /categories/#bitcoin
+      - title: "Ethereum"
+        url: /categories/#ethereum
   - title: "Docker"
     url: /categories/#docker
   - title: "Kubernetes(K8S)"
