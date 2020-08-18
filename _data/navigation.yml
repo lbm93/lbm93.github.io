@@ -18,13 +18,16 @@ posts:
         url: /categories/#bitcoin
       - title: "Ethereum"
         url: /categories/#ethereum
-  - title: "Web Programming"
-    url: /categories/#webprogramming
-  - title: "Kubernetes(K8S)"
-    url: /categories/#kubernetes
-  - title: "Protocol"
-    url: /categories/#protocol
-  - title: "Post"
-    url: /categories/#post
-  - title: "Etc"
-    url: /categories/#etc
+  - title: "Cryptography"
+    url: /categories/#Cryptography
+  - title: "IOT"
+    url: /categories/#iot
+  - title: "Web"
+    url: /categories/#web
+  - title: "Language"
+      - title: "Node js"
+        url: /categories/#nodejs
+      - title: "Java Script"
+        url: /categories/#javascript
+  - title: "Dialy Post"
+    url: /categories/#dailypost
