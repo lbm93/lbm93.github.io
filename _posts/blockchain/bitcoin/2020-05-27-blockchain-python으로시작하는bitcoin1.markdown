@@ -162,7 +162,7 @@ $pyenv activate [virtualenv name]
 
 가상환경에 들어서면 다음과 같이 쉘 아이콘 앞에 가상환경 명이 생긴다.  
 
-![그림](/images/img/blockchain-bitcoin/가상환경진입.png)
+![그림](/assets/images/img/blockchain-bitcoin/가상환경진입.png)
   
 **가상환경 나가기**
 ```bash
