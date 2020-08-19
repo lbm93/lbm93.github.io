@@ -20,9 +20,9 @@ lastmod: 2019-11-28 19:00:00 -0900
 **Geth설치를 끝내고 이제 Geth를 시작하기 앞서 하나의 node로서 동작할 준비를 합니다.**    
 
 # 목록    
-1. [**Ethereum 환경설정 [1탄]-#1.Geth 설치**](https://lbm93.github.io/ethereum/ethereum%20환경설정/ethereum-이더리움환경설정1/#)
-2. [**Ethereum 환경설정 [2탄]-#2.Geth 환경설정**](https://lbm93.github.io/ethereum/ethereum%20환경설정/ethereum-이더리움환경설정2/#)
-3. [**Ethereum 환경설정 [3탄]-#3.Geth 실행**](https://lbm93.github.io/ethereum/ethereum%20환경설정/ethereum-이더리움환경설정3/#)  
+1. [**Ethereum 환경설정 [1탄]-#1.Geth 설치**](https://lbm93.github.io/ethereum/ethereum%20환경설정/ethereum-이더리움환경설정1/)
+2. [**Ethereum 환경설정 [2탄]-#2.Geth 환경설정**](https://lbm93.github.io/ethereum/ethereum%20환경설정/ethereum-이더리움환경설정2/)
+3. [**Ethereum 환경설정 [3탄]-#3.Geth 실행**](https://lbm93.github.io/ethereum/ethereum%20환경설정/ethereum-이더리움환경설정3/)  
 
 ---
 
@@ -33,7 +33,7 @@ lastmod: 2019-11-28 19:00:00 -0900
 
 저는 밑의 그림처럼 경로를 만들었습니다.
 
-![그림](/images/img/blockchain-ethereum/환경설정/경로.PNG)
+![그림](/assets/images/img/blockchain-ethereum/환경설정/경로.PNG)
 
 이제 노드로써 ethereum network에 참여하기위한 준비를 합니다.  
 
@@ -87,7 +87,7 @@ private network로 구성할꺼라 genesis block을 설정해줘야 합니다. �
 
 그럼 디렉터리 구조를 트리로 보여줍니다. 밑의 그림처럼 못보던 파일들이 생겼습니다.  
 
-![그림](/images/img/blockchain-ethereum/환경설정/tree.PNG)
+![그림](/assets/images/img/blockchain-ethereum/환경설정/tree.PNG)
 
 
 # Geth 구동
@@ -106,7 +106,7 @@ consol : 대화형 자바스크립트 콘솔을 기동 한다.
 정상 작동하면 다음 그림처럼 나옵니다.  
 
 
-![그림](/images/img/blockchain-ethereum/환경설정/정상작동.PNG)
+![그림](/assets/images/img/blockchain-ethereum/환경설정/정상작동.PNG)
 
 ---
 

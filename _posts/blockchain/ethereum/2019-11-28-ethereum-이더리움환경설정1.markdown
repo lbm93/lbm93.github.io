@@ -20,9 +20,9 @@ lastmod: 2019-11-28 19:00:00 -0900
 **Ethereum Client중에 go언어로 개발된 Geth(Go Ethereum)을 설치하는 방법에 대하여 알아봅니다.**  
 
 # 목록    
-1. [**Ethereum 환경설정 [1탄]-#1.Geth 설치**](https://lbm93.github.io/ethereum/ethereum%20환경설정/ethereum-이더리움환경설정1/#)
-2. [**Ethereum 환경설정 [2탄]-#2.Geth 환경설정**](https://lbm93.github.io/ethereum/ethereum%20환경설정/ethereum-이더리움환경설정2/#)
-3. [**Ethereum 환경설정 [3탄]-#3.Geth 실행**](https://lbm93.github.io/ethereum/ethereum%20환경설정/ethereum-이더리움환경설정3/#)  
+1. [**Ethereum 환경설정 [1탄]-#1.Geth 설치**](https://lbm93.github.io/ethereum/ethereum%20환경설정/ethereum-이더리움환경설정1/)
+2. [**Ethereum 환경설정 [2탄]-#2.Geth 환경설정**](https://lbm93.github.io/ethereum/ethereum%20환경설정/ethereum-이더리움환경설정2/)
+3. [**Ethereum 환경설정 [3탄]-#3.Geth 실행**](https://lbm93.github.io/ethereum/ethereum%20환경설정/ethereum-이더리움환경설정3/)  
 
 ---
 
@@ -37,7 +37,7 @@ lastmod: 2019-11-28 19:00:00 -0900
 # Ethereum Client 종류
 Ethereum Client는 다양한 언어로 만들어져 다양한 Client가 존재합니다. 바로 아래 그림은 Client의 종류를 보여줍니다.  
 
-![그림](/images/img/blockchain-ethereum/환경설정/client종류.png)
+![그림](/assets/images/img/blockchain-ethereum/환경설정/client종류.png)
 
 우리는 여기서 Go 언어로 개발된 Geth를 사용합니다. 이제 설치를 진행해 봅시다.  
 
@@ -68,7 +68,7 @@ Geth는 외부에 있는 ethereum 패키지에 있으므로 ethereum 패키지�
 
 > %geth version
 
-![그림](/images/img/blockchain-ethereum/환경설정/version확인.PNG)
+![그림](/assets/images/img/blockchain-ethereum/환경설정/version확인.PNG)
 
 ---
 
