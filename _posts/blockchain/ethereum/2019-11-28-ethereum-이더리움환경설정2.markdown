@@ -17,13 +17,12 @@ tags:
 lastmod: 2019-11-28 19:00:00 -0900
 ---
 
-**Geth설치를 끝내고 이제 Geth를 시작하기 앞서 하나의 node로서 동작할 준비를 합니다.**
-  
-# 목록  
-1. [**Ethereum 환경설정 [1탄]-#1.Geth 설치**](https://lbm93.github.io/bitcoin/blockchain-python으로시작하는bitcoin1/)
-2. [**Ethereum 환경설정 [2탄]-#2.Geth 환경설정**](https://lbm93.github.io/bitcoin/blockchain-python으로시작하는bitcoin2/)
-3. [**Ethereum 환경설정 [3탄]-#3.Geth 실행**] https://lbm93.github.io/bitcoin/blockchain-python으로시작하는bitcoin3/)
-
+**Geth설치를 끝내고 이제 Geth를 시작하기 앞서 하나의 node로서 동작할 준비를 합니다.**  
+    
+# 목록    
+1. [**Ethereum 환경설정 [1탄]-#1.Geth 설치**](https://lbm93.github.io/ethereum/ethereum%20환경설정/ethereum-이더리움환경설정1/#)
+2. [**Ethereum 환경설정 [2탄]-#2.Geth 환경설정**](https://lbm93.github.io/ethereum/ethereum%20환경설정/ethereum-이더리움환경설정2/#)
+3. [**Ethereum 환경설정 [3탄]-#3.Geth 실행**](https://lbm93.github.io/ethereum/ethereum%20환경설정/ethereum-이더리움환경설정3/#)
 ---
 
 # Make Datadir
