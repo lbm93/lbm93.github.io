@@ -10,15 +10,14 @@ tags:
 lastmod: 2019-01-26 19:00:00 -0900
 ---
 
-**BitCoin의 코어 프로그래밍을 하기 위해서 시작하는 포스팅으로 책 [Programming BitCoin](https://book.naver.com/bookdb/book_detail.nhn?bid=16242884) 을 기반으로 작성되었으며 언어는 Python으로 시작한다.**    
-    
-# 목록
+**BitCoin의 코어 프로그래밍을 하기 위해서 시작하는 포스팅으로 책 [Programming BitCoin](https://book.naver.com/bookdb/book_detail.nhn?bid=16242884) 을 기반으로 작성되었으며 언어는 Python으로 시작한다.**  
+
+# 목록  
 
 1. [**Python으로 시작하는 BitCoin [1탄]-#1.개발환경 구성**](https://lbm93.github.io/bitcoin/blockchain-python으로시작하는bitcoin1/)
 2. [**Python으로 시작하는 BitCoin [2탄]-#2.유한체란?**](https://lbm93.github.io/bitcoin/blockchain-python으로시작하는bitcoin2/)
-3. [**Python으로 시작하는 BitCoin [3탄]-#3.유한체 코딩**](https://lbm93.github.io/bitcoin/blockchain-python으로시작하는bitcoin3/)
+3. [**Python으로 시작하는 BitCoin [3탄]-#3.유한체 코딩**](https://lbm93.github.io/bitcoin/blockchain-python으로시작하는bitcoin3/)  
 
-  
 # 이번 포스팅의 목적  
 
 이번 포스팅은 BitCoin을 시작하기 위해서 파이썬을 설치하고 pyenv로 파이썬을 버전별로 쉽게 관리하고 virtualenv를 실행하는 것 까지 

@@ -1,7 +1,7 @@
 ---
 title: "Ethereum 환경설정 [3탄]"
 date: 2020-05-27 20:00:00 -0900
-categories: [ethereum, ethereum 환경설정]
+categories: [ethereum]
 tags: 
 - blockchain
 - 블록체인

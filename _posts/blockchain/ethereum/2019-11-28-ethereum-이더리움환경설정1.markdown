@@ -1,7 +1,7 @@
 ---
 title: "Ethereum 환경설정 [1탄]"
 date: 2020-05-27 20:00:00 -0900
-categories: [ethereum, ethereum 환경설정]
+categories: [ethereum]
 tags: 
 - blockchain
 - 블록체인
@@ -18,11 +18,12 @@ lastmod: 2019-11-28 19:00:00 -0900
 ---
 
 **Ethereum Client중에 go언어로 개발된 Geth(Go Ethereum)을 설치하는 방법에 대하여 알아봅니다.**  
-    
+
 # 목록    
 1. [**Ethereum 환경설정 [1탄]-#1.Geth 설치**](https://lbm93.github.io/ethereum/ethereum%20환경설정/ethereum-이더리움환경설정1/#)
 2. [**Ethereum 환경설정 [2탄]-#2.Geth 환경설정**](https://lbm93.github.io/ethereum/ethereum%20환경설정/ethereum-이더리움환경설정2/#)
-3. [**Ethereum 환경설정 [3탄]-#3.Geth 실행**](https://lbm93.github.io/ethereum/ethereum%20환경설정/ethereum-이더리움환경설정3/#)
+3. [**Ethereum 환경설정 [3탄]-#3.Geth 실행**](https://lbm93.github.io/ethereum/ethereum%20환경설정/ethereum-이더리움환경설정3/#)  
+
 ---
 
 # 개발 환경
