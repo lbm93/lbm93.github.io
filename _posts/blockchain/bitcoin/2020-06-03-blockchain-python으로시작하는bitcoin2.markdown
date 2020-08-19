@@ -1,5 +1,4 @@
 ---
-l---
 title: "Python으로 시작하는 BitCoin [2탄]"
 date: 2020-05-27 20:00:00 -0900
 categories: bitcoin
