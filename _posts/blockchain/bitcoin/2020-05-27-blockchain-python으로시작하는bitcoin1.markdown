@@ -176,11 +176,11 @@ Jupyter notebook 실행은 다음 명령으로 수행한다.
 ```bash
 $jupyter notebook
 ```
-
-
+  
+  
+  
 # 참고문헌  
-
-- *rogramming Bitcoin - Jimmy Song*
+- *programming Bitcoin - Jimmy Song*
 
 
 

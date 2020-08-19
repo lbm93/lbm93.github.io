@@ -1,33 +1,18 @@
 ---
-layout: article
-title: "[BitCoin] 2.유한체"
-date: 2020-01-14 18:00:32 +0900
-categories: [development, bitcoin-programming]
-# description: "웹 통신 프로토콜인 URL, HTTP, SMTP, MIME, FTP 을 정리"
-excerpt: "Python으로 시작하는 BitCoin Programming"
-image:
-  teaser: posts/blockchain/bitcoin.png
-  credit: 
-  creditlink: 
-  #url to their site or licensing
-locale: "ko_KR"
-# 리플 옵션
-comments: true
-tags:
-- blockchain
-- 블록체인
-- blockchain client
-- 블록체인 클라이언트
-- geth
-- 게스
-- Geth 환경설정
-- solidity
-- 솔리디티
-- smartcontract
-- 스마트컨트랙트
-- bitcoin
-- 비트코인
+l---
+title: "Python으로 시작하는 BitCoin [2탄]"
+date: 2020-05-27 20:00:00 -0900
+categories: bitcoin
+tags: 
+  - blockchain
+  - bitcoin
+  - 비트코인
+  - 블록체인
+lastmod: 2019-01-26 19:00:00 -0900
 ---
+
+**BitCoin의 코어 프로그래밍을 하기 위해서 시작하는 포스팅으로 책 [Programming BitCoin](https://book.naver.com/bookdb/book_detail.nhn?bid=16242884) 을 기반으로 작성되었으며 언어는 Python으로 시작한다.**  
+
 {% include toc.html %}
 
 # 시작하기 앞서
