@@ -1,19 +1,8 @@
 ---
-layout: article
-title: "Solidity 기본문법"
-date: 2020-01-14 18:00:32 +0900
-categories: [development, ethereum-programming]
-# description: 
-excerpt: "Soilidity 문법에 대하여 알아본다."
-image:
-  teaser: posts/blockchain/ethereum.png
-  credit: 
-  creditlink: 
-  #url to their site or licensing
-locale: "ko_KR"
-# 리플 옵션
-comments: true
-tags:
+title: "Solidity 기본"
+date: 2020-05-27 20:00:00 -0900
+categories: [ethereum]
+tags: 
 - blockchain
 - 블록체인
 - blockchain client
@@ -25,13 +14,13 @@ tags:
 - 솔리디티
 - smartcontract
 - 스마트컨트랙트
+lastmod: 2020-01-14 19:00:00 -0900
 ---
-{% include toc.html %}
 
-# Solidity 기본
-SmartContract를 작성하기 위하여 Solidity의 기본적인 Syntax들을 정리한다.  
+**SmartContract를 작성하기 위하여 Solidity의 기본적인 Syntax들을 정리한다.**  
 
 ---
+
 
 # 솔리티디 버전
 ```s

@@ -1,19 +1,8 @@
 ---
-layout: article
-title: "Geth Private Blockchain 만들기"
-date: 2019-12-03 18:00:32 +0900
-categories: [development, ethereum-programming]
-# description: 
-excerpt: "나만의 Private Block Chain Network를 구성해본다."
-image:
-  teaser: posts/blockchain/ethereum.png
-  credit: 
-  creditlink: 
-  #url to their site or licensing
-locale: "ko_KR"
-# 리플 옵션
-comments: true
-tags:
+title: "Private blockchain 만들기"
+date: 2020-05-27 20:00:00 -0900
+categories: [ethereum]
+tags: 
 - blockchain
 - 블록체인
 - blockchain client
@@ -25,11 +14,16 @@ tags:
 - 솔리디티
 - smartcontract
 - 스마트컨트랙트
+lastmod: 2019-12-03 19:00:00 -0900
 ---
-{% include toc.html %}
+
+**Test 환경을 구성하기위해 Private Block chain을 만드는 과정을 담는다.**  
+
+---
+
 
 # Private Block chain 만들기(Geth 백그라운드 실행)
-Test 환경을 구성하기위해 Private Block chain을 만드는 과정을 담는다. 이번 포스트에서는 Geth를 백그라운드로 실행시키고 실행 옵션에 rpc options를 추가시켜 web3로 간단하게 이용가능하도록 Geth 실행에 관련한 내용을 적는다.
+ 이번 포스트에서는 Geth를 백그라운드로 실행시키고 실행 옵션에 rpc options를 추가시켜 web3로 간단하게 이용가능하도록 Geth 실행에 관련한 내용을 적는다.
 
 ---
 
@@ -46,9 +40,9 @@ Test 환경을 구성하기위해 Private Block chain을 만드는 과정을 담
 
 위 두 옵션 중 하나라도 실행이 됬으면 이제 제대로 작동하는지 rpc 접속으로 확인해보자.  
 
-![그림](/images/img/blockchain-ethereum/privateblockchain/privateblockchain1.PNG)  
+![그림](/assets/images/img/blockchain-ethereum/privateblockchain/privateblockchain1.PNG)  
 
-![그림](/images/img/blockchain-ethereum/privateblockchain/privateblockchain2.PNG)  
+![그림](/assets/images/img/blockchain-ethereum/privateblockchain/privateblockchain2.PNG)  
 
 두번째 그림과 같이 나오면 Geth가 정상적으로 동작중인 것을 확인할 수 있다. 위 명령어로 클라이언트를 실행할 시 대신 rpc 명령어를 사용할 수 없다. 예를 들어 새로운 Account를 만들기 위해 사용되는 personal.newAccount()같은 메소드를 사용할 수 없다. 해당 메소드같이 다른 메소드들을 사용하려면 실행 시 다음과 같은 옵션들을 줘야 한다.  
 
@@ -81,7 +75,7 @@ genesis 파일은 아래 링크된 포스트에서 작성한 그대로 사용한
 
 위 과정을 통해 3개의 Node를 생성했으면 아래 그림처럼 확인할 수 있다.  
 
-![그림](/images/img/blockchain-ethereum/privateblockchain/privateblockchain3.PNG)  
+![그림](/assets/images/img/blockchain-ethereum/privateblockchain/privateblockchain3.PNG)  
 
 그리고 각각의 Node에 RPC로 접근해 다음과 같은 명령어로 Account들을 생성해준다.  
 
@@ -89,9 +83,9 @@ genesis 파일은 아래 링크된 포스트에서 작성한 그대로 사용한
 
 위 명령을 수행하면 비밀번호를 입력하라고 나오는데 비밀번호는 간단한게 123으로 지정한다.  이 비밀번호가 Private Key로 사용되니 까먹지 말 것!!  
 
-![그림](/images/img/blockchain-ethereum/privateblockchain/personalnewaccount1.PNG)
-![그림](/images/img/blockchain-ethereum/privateblockchain/personalnewaccount2.PNG)
-![그림](/images/img/blockchain-ethereum/privateblockchain/personalnewaccount3.PNG)
+![그림](/assets/images/img/blockchain-ethereum/privateblockchain/personalnewaccount1.PNG)
+![그림](/assets/images/img/blockchain-ethereum/privateblockchain/personalnewaccount2.PNG)
+![그림](/assets/images/img/blockchain-ethereum/privateblockchain/personalnewaccount3.PNG)
 
 
 
@@ -125,29 +119,29 @@ genesis 파일은 아래 링크된 포스트에서 작성한 그대로 사용한
 - admin.nodeInfo.enode
 
 1. 첫번째 노드 enode 
-![그림](/images/img/blockchain-ethereum/privateblockchain/enode1.PNG)
+![그림](/assets/images/img/blockchain-ethereum/privateblockchain/enode1.PNG)
 
 2. 두번째 노드 enode 
-![그림](/images/img/blockchain-ethereum/privateblockchain/enode2.PNG)
+![그림](/assets/images/img/blockchain-ethereum/privateblockchain/enode2.PNG)
 
 3. 세번째 노드 enode 
-![그림](/images/img/blockchain-ethereum/privateblockchain/enode3.PNG)
+![그림](/assets/images/img/blockchain-ethereum/privateblockchain/enode3.PNG)
 
 
 다음으로는 첫번째 Node의 디렉터리로 이동해 static-nodes.json 파일을 만든다. 이때 keystore와 같은 위치에 만들어야 한다. static-nodes.json을 만들고 위에서 확인한 노드들을 다음과같이 입력해준다.  
 
-![그림](/images/img/blockchain-ethereum/privateblockchain/staticnodesjson1.PNG)  
+![그림](/assets/images/img/blockchain-ethereum/privateblockchain/staticnodesjson1.PNG)  
 
 그리고 다시 세 노드를 실행하고 admin.peers로 확인을 해보자.  
 
 1. 첫번째 노드 admin.peers 확인
-![그림](/images/img/blockchain-ethereum/privateblockchain/staticnodesjson2.PNG)
+![그림](/assets/images/img/blockchain-ethereum/privateblockchain/staticnodesjson2.PNG)
 
 2. 두번째 노드 admin.peers 확인
-![그림](/images/img/blockchain-ethereum/privateblockchain/staticnodesjson3.PNG)
+![그림](/assets/images/img/blockchain-ethereum/privateblockchain/staticnodesjson3.PNG)
 
 3. 세번째 노드 admin.peers 확인
-![그림](/images/img/blockchain-ethereum/privateblockchain/staticnodesjson4.PNG)
+![그림](/assets/images/img/blockchain-ethereum/privateblockchain/staticnodesjson4.PNG)
 
 
 이렇게 함으로써 나만의 Private Block Chain 네트워크를 구성했다.   

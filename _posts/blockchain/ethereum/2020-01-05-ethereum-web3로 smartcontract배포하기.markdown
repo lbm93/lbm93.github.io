@@ -1,19 +1,8 @@
 ---
-layout: article
 title: "Web3.js를 이용한 SmartContract 배포"
-date: 2019-01-05 18:00:32 +0900
-categories: [development, ethereum-programming]
-# description: 
-excerpt: "Web3.js로 스마트컨트랙트를 배포 해본다."
-image:
-  teaser: posts/blockchain/ethereum.png
-  credit: 
-  creditlink: 
-  #url to their site or licensing
-locale: "ko_KR"
-# 리플 옵션
-comments: true
-tags:
+date: 2020-05-27 20:00:00 -0900
+categories: [ethereum]
+tags: 
 - blockchain
 - 블록체인
 - blockchain client
@@ -25,11 +14,10 @@ tags:
 - 솔리디티
 - smartcontract
 - 스마트컨트랙트
+lastmod: 2020-01-05 19:00:00 -0900
 ---
-{% include toc.html %}
 
-# Web3.js를 이용한 SmartContract 배포 및 사용하기
-이번 시간에는 Web3.js를 이용해 smartContract를 배포해보고 배포한 Contract를 call해서 사용해보기까지 알아봅니다.
+**Web3.js를 이용해 smartContract를 배포해보고 배포한 Contract를 call해서 사용해보기까지 알아봅니다.**  
 
 ---
 
@@ -50,7 +38,7 @@ Contract 객체 생성(ABI, 배포된 Contract Address) -> Method 호출
 # SmartContract 작성
 먼저 SmartContract를 Solidity라는 언어로 작성 해줍니다. 저는 편의를 위해 Remix에서 작성했습니다. Remix는 <https://remix.ethereum.org> 에서 사용이 가능합니다. 먼저 아래의 그림처럼 간단하게 Contract를 작성해 줍니다.  
 
-![그림](/images/img/blockchain-ethereum/web3test/Contract배포/TestContractCode.png)
+![그림](/assets/images/img/blockchain-ethereum/web3test/Contract배포/TestContractCode.png)
 
 위 코드는 간단히 HelloWorld 메소드 호출 시 greeting이라는 변수에 HelloWorld가 들어가고 say 메소드 호출 시 greeting 값을 불러오는 코드입니다.  
 
@@ -64,23 +52,23 @@ Contract 객체 생성(ABI, 배포된 Contract Address) -> Method 호출
 2. Remix에서 컴파일하기  
 Remix에서 컴파일을 하는 방법은 먼저 컴파일러 버전을 선택해줍니다. 아래 그림과 같이 setting 탭에서 컴파일러 버전을 선택하면 됩니다. `컴파일러 버전은 Contract작성 시 맨 위에 기입했던 버전과 동일해야 합니다.` 
 
-![그림](/images/img/blockchain-ethereum/web3test/Contract배포/CompileVersion.png)
+![그림](/assets/images/img/blockchain-ethereum/web3test/Contract배포/CompileVersion.png)
 
 버전 선택이 되었다면 아래 그림처럼 Compile 탭에서 컴파일을 시작합니다.  
 
-![그림](/images/img/blockchain-ethereum/web3test/Contract배포/RemixCompile.png)
+![그림](/assets/images/img/blockchain-ethereum/web3test/Contract배포/RemixCompile.png)
 
 정상적으로 컴파일이 완료되었다면 run탭에 아래 그림과 같이 컴파일된 Contract를 확인할 수 있습니다.  
 
-![그림](/images/img/blockchain-ethereum/web3test/Contract배포/Compiled.png)
+![그림](/assets/images/img/blockchain-ethereum/web3test/Contract배포/Compiled.png)
 
 
 # SmartContract의 ByteCode와 ABI얻기
 컴파일이 제대로 성공했다면 바로 위의 그림에서 밑에 HelloWorld라고 생긴걸 확인할 수 있습니다. 여기서 옆에 Details를 누르면 아래 그림처럼 Contrat의 ByteCode와 ABI를 얻을 수 있습니다.  
 
-![그림](/images/img/blockchain-ethereum/web3test/Contract배포/ByteCode.png)
+![그림](/assets/images/img/blockchain-ethereum/web3test/Contract배포/ByteCode.png)
 
-![그림](/images/img/blockchain-ethereum/web3test/Contract배포/ABI.png)
+![그림](/assets/images/img/blockchain-ethereum/web3test/Contract배포/ABI.png)
 
 위의 ABI같은 경우에는 옆에 클립보드로 복사를누르면 내용이 복사됩니다.  
 
@@ -155,26 +143,26 @@ const deploy = MyContract.deploy({
 
 > toHex를 해버린 ByteCode
 
-![그림](/images/img/blockchain-ethereum/web3test/Contract배포/FaildByteCode.png)
+![그림](/assets/images/img/blockchain-ethereum/web3test/Contract배포/FaildByteCode.png)
 
 위 그림처럼 Bytecode가 길어진다면 당연히 이 Bytecode를 다 블록에 포함시키기 위해서는 더 많은 비용의 가스가 소모되겠죠?  
   
 
 > '0x' 를 붙여준 ByteCode
 
-![그림](/images/img/blockchain-ethereum/web3test/Contract배포/SuccessByteCode.png)
+![그림](/assets/images/img/blockchain-ethereum/web3test/Contract배포/SuccessByteCode.png)
 
 그리고 gas 부분은 gaslimit이 되는 부분으로 너무 적게도 너무 많게도 적으면 안된다. 그러면 배포시 에러가 발생한다. 정상적으로 배포가 되어 채굴이 된다면 아래그림처럼 Transaction Hash값이 나오고 이 Transaction Hash를 확인 해 볼 수 있다.  
 
-![그림](/images/img/blockchain-ethereum/web3test/Contract배포/Contract배포.png)
+![그림](/assets/images/img/blockchain-ethereum/web3test/Contract배포/Contract배포.png)
 
-![그림](/images/img/blockchain-ethereum/web3test/Contract배포/배포된Contract확인.png)
+![그림](/assets/images/img/blockchain-ethereum/web3test/Contract배포/배포된Contract확인.png)
 
 
 # 베포 한 SmartContract 사용해 보기
 배포 한 SmartContract를 사용하기 위해서는 반드시 BlockChain에 Contract의 ByteCode가 포함된 상태여야한다. 정상적으로 배포가 되었다면 아래 그림처럼 SmartContract의 주소와 JSONINTERFACE를 확인해 볼 수 있다.
 
-![그림](/images/img/blockchain-ethereum/web3test/Contract배포/ContractAddress.png)
+![그림](/assets/images/img/blockchain-ethereum/web3test/Contract배포/ContractAddress.png)
 
 위에서 우리는 JSONINTERFACE 를 확인할 수 있다. 이 것은 ABI로 이 인터페이스를 통해 우리가 어떤 메소드가 존재하는지 확인하고 SmartContract를 이용하게 해주는 가이드라고 보면 된다.  
 
@@ -195,7 +183,7 @@ TestContract.methods.say().call().then(console.log);
 위 코드를 수행하게 되면 다음과 같은 결과를 확인할 수 있다.  
 
 
-![그림](/images/img/blockchain-ethereum/web3test/Contract배포/Call.png)
+![그림](/assets/images/img/blockchain-ethereum/web3test/Contract배포/Call.png)
 
 
 > ps.여기까지 web3를 이용해 SmartContract를 배포하고 사용해보는 시간을 가졌다. 정말 복잡하고 web3.js버전이 자주 바뀌어 안되는 부분도 찾아가면서 하느라 시간이 많이 걸렸습니다 !! 다들 열심히 하십쇼!!

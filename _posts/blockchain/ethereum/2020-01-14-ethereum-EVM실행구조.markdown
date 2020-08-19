@@ -1,19 +1,8 @@
 ---
-layout: article
 title: "EVM 실행구조"
-date: 2020-01-14 18:00:32 +0900
-categories: [development, ethereum-programming]
-# description: 
-excerpt: "Ethereum의 EVM이 어떤 구조로 되어있는지 알아본다."
-image:
-  teaser: posts/blockchain/ethereum.png
-  credit: 
-  creditlink: 
-  #url to their site or licensing
-locale: "ko_KR"
-# 리플 옵션
-comments: true
-tags:
+date: 2020-05-27 20:00:00 -0900
+categories: [ethereum]
+tags: 
 - blockchain
 - 블록체인
 - blockchain client
@@ -25,18 +14,17 @@ tags:
 - 솔리디티
 - smartcontract
 - 스마트컨트랙트
+lastmod: 2020-01-14 19:00:00 -0900
 ---
-{% include toc.html %}
 
-# EVM(Ethereum Virtual Machine) 실행구조
-Solidity로 작성된 SmartContract가 컴파일되어 BlockChain에 실려 EVM에서 어떻게 처리되는지 알기 위하여 EVM의 구조에 대하여 알아본다.
+**Solidity로 작성된 SmartContract가 컴파일되어 BlockChain에 실려 EVM에서 어떻게 처리되는지 알기 위하여 EVM의 구조에 대하여 알아본다.**  
 
 ---
 
 # EVM 실행구조
 아래 그림은 EVM의 실행구조이다.  
 
-![그림](/images/img/blockchain-ethereum/EVM구조/EVM구조.png)
+![그림](/assets/images/img/blockchain-ethereum/EVM구조/EVM구조.png)
 
 **Program Counter**  
    - 프로그램 카운터는 다음 차례에 실행할 EVM 명령어의 위치를 가리킵니다.  
