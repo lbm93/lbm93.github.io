@@ -1,19 +1,9 @@
 ---
-layout: article
-title: "대칭키와 비대칭키"
-date: 2019-10-27 18:00:32 +0900
-categories: [development, cryptography]
-# description: "웹 통신 프로토콜인 URL, HTTP, SMTP, MIME, FTP 을 정리"
-excerpt: "대칭키와 비대칭키"
-image:
-  teaser: posts/ssl/ssl.png
-  credit: 
-  creditlink: https://topis.me/48
-  #url to their site or licensing
-locale: "ko_KR"
-# 리플 옵션
-comments: true
-tags:
+title: "대칭키 그리고 비대칭키"
+date: 2019-10-27 20:00:00 -0900
+categories: [cryptography]
+tags: 
+---
 - 대칭키
 - 비대칭키
 - 타원곡선
@@ -23,8 +13,10 @@ tags:
 - 전자서명
 - ECDSA
 ---
-{% include toc.html %}
 
+**대칭키와 비대칭키에 대하여 알아본다.**  
+
+---
 
 # 대칭키와 비대칭키
 대칭키와 비대칭키방식은 평문을 암호화와 복호화할때 쓰이는 키의 종류로 구분한다.
@@ -36,7 +28,7 @@ tags:
 
 대칭키의 대표적인 종류는 **AES**와 **DES**가 있다.
 
-![symmetrickey]({{ site.url }}/images/img/blockchain-cryptography/symmetrickey.PNG)
+![symmetrickey]({{ site.url }}/assets/images/img/blockchain-cryptography/symmetrickey.PNG)
 
 
 예를들어, A와 B가 대칭키 기법을 이용하여 데이터를 주고 받을 때 동일한 Private Key를 A와 B가 공유하게된다. 그럼 A나 B는 하나의 Private Key를 가지고 암호화 복호화를한다. 그 과정을 살펴보자.
@@ -45,7 +37,7 @@ tags:
 
 # 대칭키를 이용하여 A가 B에게 평문 T를 보낸다 가정
 
-![symmetrickey1]({{ site.url }}/images/img/blockchain-cryptography/symmetrickey1.PNG)
+![symmetrickey1]({{ site.url }}/assets/images/img/blockchain-cryptography/symmetrickey1.PNG)
 
 대칭키는 비교적 간단하게 암호화하여 전송할 수 있지만 `대칭키를 Shared하기` 때문에 평문이 안전하지가 않다.
 
@@ -62,7 +54,7 @@ Private Key를 생성해 Private Key를 이용해 Public Key를 만든다. 보�
 
 비대칭키의 대표적인 종류로는 RSA가있다.
 
-![그림3]({{ site.url }}/images/img/blockchain-cryptography/publickey.PNG)
+![그림3]({{ site.url }}/assets/images/img/blockchain-cryptography/publickey.PNG)
 
 
 마찬가지로 A와 B가 비대칭키 기법을 이용하여 데이터를 주고 받을 때를 살펴보자.
@@ -71,7 +63,7 @@ Private Key를 생성해 Private Key를 이용해 Public Key를 만든다. 보�
 
 # 비대칭키를 이용하여 A가 B에게 평문 T를 보낸다 가정
 
-![그림4]({{ site.url }}/images/img/blockchain-cryptography/publickey1.PNG)
+![그림4]({{ site.url }}/assets/images/img/blockchain-cryptography/publickey1.PNG)
 
 비대칭키는 암호화시 PublicKey를 사용하고, 복호화시 Private Key를 사용한다. 복호화키를 감추기때문에 보안의 필수 요소인 기밀성이 좋아진다.
 

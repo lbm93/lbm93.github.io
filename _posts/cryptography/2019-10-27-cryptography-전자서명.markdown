@@ -1,19 +1,9 @@
 ---
-layout: article
-title: "전자서명 ECDSA"
-date: 2019-10-27 18:00:32 +0900
-categories: [development, cryptography]
-# description: "웹 통신 프로토콜인 URL, HTTP, SMTP, MIME, FTP 을 정리"
-excerpt: "전자서명 ECDSA"
-image:
-  teaser: posts/ssl/ssl.png
-  credit: 
-  creditlink: https://topis.me/48
-  #url to their site or licensing
-locale: "ko_KR"
-# 리플 옵션
-comments: true
-tags:
+title: "전자서명(Digital Signature)"
+date: 2019-10-27 20:00:00 -0900
+categories: [cryptography]
+tags: 
+---
 - 대칭키
 - 비대칭키
 - 타원곡선
@@ -23,7 +13,10 @@ tags:
 - 전자서명
 - ECDSA
 ---
-{% include toc.html %}
+
+**전자서명 개념에 대하여 알아본다.**  
+
+---
 
 # 전자서명
 전자서명이라 함은, 서명자를 확인하고 서명자가 당해 전자문서에 서명했다는 사실을 나타내는데 이용하려고, 특정 전자문서에 첨부되거나 논리적으로 결합된 전자적 형태의 정보를 말한다.[1]
@@ -31,7 +24,7 @@ tags:
 
 전자 서명의 순서는 다음과 같이 이루어진다.
 
-[그림1]({{ site.url }}/images/img/blockchain-cryptography/digitalsigned.png)[2]
+[그림1]({{ site.url }}/assets/images/img/blockchain-cryptography/digitalsigned.png)[2]
 
 
 Private Key를 이용해서 정보를 암호화한 후 Public Key와 함께 암호화된 정보를 전송한다.   

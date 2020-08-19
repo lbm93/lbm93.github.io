@@ -1,19 +1,9 @@
 ---
-layout: article
-title: "SSL 인증서란?"
-date: 2019-10-31 18:00:32 +0900
-categories: [development, cryptography]
-# description: "웹 통신 프로토콜인 URL, HTTP, SMTP, MIME, FTP 을 정리"
-excerpt: "SSL 인증서란?"
-image:
-  teaser: posts/ssl/ssl.png
-  credit: 
-  creditlink: https://topis.me/48
-  #url to their site or licensing
-locale: "ko_KR"
-# 리플 옵션
-comments: true
-tags:
+title: "SSL 인증서 "
+date: 2019-10-27 20:00:00 -0900
+categories: [cryptography]
+tags: 
+---
 - 대칭키
 - 비대칭키
 - 타원곡선
@@ -23,12 +13,21 @@ tags:
 - 전자서명
 - ECDSA
 ---
-{% include toc.html %}
+
+**SSL이 인증서는 무엇인가 알아본다.**  
+  
+# 목록    
+1. [**SSL-#1.SSL의 개념**](https://lbm93.github.io/development/cryptography/cryptography-SSL개념및암호화/)
+2. [**SSL-#2.SSL 인증서**](https://lbm93.github.io/development/cryptography/cryptography-SSL인증서/)
+3. [**SSL-#3.SSL에서의 SSC,CSR 개념**](https://lbm93.github.io/development/cryptography/cryptography-SSL(SSC,CSR)/)
+4. [**SSL-#4.SSL동작 방법**](https://lbm93.github.io/development/cryptography/cryptography-SSL동작방법/)  
+  
+---
 
 # SSL 인증서
 SSL 인증서는 클라이언트와 서버간의 통신을 제 3자가 보증해주는 전자화된 문서이다. 클라이언트가 서버에 접속한 직후에 서버는 클라이언트에게 이 인증서 정보를 전달하게 된다. 클라이언트는 이 인증서 정보가 신뢰할 수 있는 것인지를 검증 한 후에 다음 절차를 수행한다.
   
-![그림]({{ site.url }}/images/img/blockchain-cryptography/ssl인증서.png)
+![그림]({{ site.url }}/assets/images/img/blockchain-cryptography/ssl인증서.png)
   
 이 인증서를 이용한다면 서로간의 통신 내용을 보호할 수 있고 클라이언트가 접속하려는 서버가 신뢰할 수 있는 서버인지 판단이 가능하다. 또 통신 내용의 악의적인 변경을 방지할 수 있다.  
 
@@ -61,7 +60,7 @@ SSL을 통해서 암호화된 통신을 제공하려는 서비스는 CA를 통�
 
 마지막으로 모든 과정을 정리한 그림을 보며 이해 바란다.
 
-![그림]({{ site.url }}/images/img/blockchain-cryptography/ssl인증서1.png)
+![그림]({{ site.url }}/assets/images/img/blockchain-cryptography/ssl인증서1.png)
 
 # 참고문서
 - <https://preamtree.tistory.com/38>
