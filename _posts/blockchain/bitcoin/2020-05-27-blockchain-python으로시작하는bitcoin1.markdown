@@ -11,7 +11,6 @@ lastmod: 2019-01-26 19:00:00 -0900
 ---
 
 # 시작하기 앞서  
-
 이 포스팅은 BitCoin의 코어 프로그래밍을 하기 위해서 시작하는 포스팅으로 책 [Programming BitCoin](https://book.naver.com/bookdb/book_detail.nhn?bid=16242884) 을 기반으로 작성되었으며 언어는 Python으로 시작한다.  
   
   
