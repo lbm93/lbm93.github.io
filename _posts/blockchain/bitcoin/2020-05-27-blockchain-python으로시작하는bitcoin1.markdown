@@ -178,8 +178,9 @@ $jupyter notebook
 ```
 
 
-# 참고문헌
-- *Programming Bitcoin - Jimmy Song*
+# 참고문헌  
+
+- *rogramming Bitcoin - Jimmy Song*
 
 
 
