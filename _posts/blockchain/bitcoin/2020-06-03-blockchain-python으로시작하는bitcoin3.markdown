@@ -1,34 +1,21 @@
 ---
-layout: article
-title: "[BitCoin] 3.유한체 코딩"
-date: 2020-01-14 18:00:32 +0900
-categories: [development, bitcoin-programming]
-# description: "웹 통신 프로토콜인 URL, HTTP, SMTP, MIME, FTP 을 정리"
-excerpt: "Python으로 시작하는 BitCoin Programming"
-image:
-  teaser: posts/blockchain/bitcoin.png
-  credit: 
-  creditlink: 
-  #url to their site or licensing
-locale: "ko_KR"
-# 리플 옵션
-comments: true
-tags:
-- blockchain
-- 블록체인
-- blockchain client
-- 블록체인 클라이언트
-- geth
-- 게스
-- Geth 환경설정
-- solidity
-- 솔리디티
-- smartcontract
-- 스마트컨트랙트
-- bitcoin
-- 비트코인
+title: "Python으로 시작하는 BitCoin [3탄]"
+date: 2020-05-27 20:00:00 -0900
+categories: bitcoin
+tags: 
+  - blockchain
+  - bitcoin
+  - 비트코인
+  - 블록체인
+lastmod: 2019-01-26 19:00:00 -0900
 ---
-{% include toc.html %}
+
+# 목록
+
+1. [**Python으로 시작하는 BitCoin [1탄]-#1.개발환경 구성**](https://lbm93.github.io/bitcoin/blockchain-python으로시작하는bitcoin1/)
+2. [**Python으로 시작하는 BitCoin [2탄]-#2.유한체란?**](https://lbm93.github.io/bitcoin/blockchain-python으로시작하는bitcoin2/)
+3. [**Python으로 시작하는 BitCoin [3탄]-#3.유한체 코딩**](https://lbm93.github.io/bitcoin/blockchain-python으로시작하는bitcoin3/)  
+
 
 # 시작하기 앞서
 이번시간에는 저번 시간에 알아본 유한체를 코딩해본다. 유한체의 덧셈 ,뺄셈 ,나눗셈, 곱셈, 거듭제곱 까지 유한체의 연산식을 구현한다.

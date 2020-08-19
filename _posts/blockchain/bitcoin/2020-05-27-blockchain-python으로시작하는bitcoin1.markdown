@@ -14,9 +14,9 @@ lastmod: 2019-01-26 19:00:00 -0900
   
 # 목록
 
-1. [**Python으로 시작하는 BitCoin [1탄]**](https://lbm93.github.io/bitcoin/blockchain-python으로시작하는bitcoin1/)
-2. [**Python으로 시작하는 BitCoin [2탄]**](https://lbm93.github.io/bitcoin/blockchain-python으로시작하는bitcoin2/)
-3. [**Python으로 시작하는 BitCoin [3탄]**](https://lbm93.github.io/bitcoin/blockchain-python으로시작하는bitcoin3/)
+1. [**Python으로 시작하는 BitCoin [1탄]-#1.개발환경 구성**](https://lbm93.github.io/bitcoin/blockchain-python으로시작하는bitcoin1/)
+2. [**Python으로 시작하는 BitCoin [2탄]-#2.유한체란?**](https://lbm93.github.io/bitcoin/blockchain-python으로시작하는bitcoin2/)
+3. [**Python으로 시작하는 BitCoin [3탄]-#3.유한체 코딩**](https://lbm93.github.io/bitcoin/blockchain-python으로시작하는bitcoin3/)
 
   
 # 이번 포스팅의 목적  
