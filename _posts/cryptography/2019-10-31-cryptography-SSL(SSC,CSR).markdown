@@ -16,10 +16,10 @@ tags:
 **SSL에서 사용하는 SSC와 CSR에 대하여 알아본다.**  
     
 # 목록    
-1. [**SSL-#1.SSL의 개념**](https://lbm93.github.io/development/cryptography/cryptography-SSL개념및암호화/)
-2. [**SSL-#2.SSL 인증서**](https://lbm93.github.io/development/cryptography/cryptography-SSL인증서/)
-3. [**SSL-#3.SSL에서의 SSC,CSR 개념**](https://lbm93.github.io/development/cryptography/cryptography-SSL(SSC,CSR)/)
-4. [**SSL-#4.SSL동작 방법**](https://lbm93.github.io/development/cryptography/cryptography-SSL동작방법/)  
+1. [**SSL-#1.SSL의 개념**](https://lbm93.github.io/cryptography/cryptography-SSL개념및암호화/)
+2. [**SSL-#2.SSL 인증서**](https://lbm93.github.io/cryptography/cryptography-SSL인증서/)
+3. [**SSL-#3.SSL에서의 SSC,CSR 개념**](https://lbm93.github.io/cryptography/cryptography-SSL(SSC,CSR)/)
+4. [**SSL-#4.SSL동작 방법**](https://lbm93.github.io/cryptography/cryptography-SSL동작방법/)  
   
 ---
 
@@ -81,7 +81,7 @@ RootCA로서 개인키를 만들 때 RSA 방식으로 만들되 키를 AES 256 b
 3. 자신이 만든 CSR을 개인키로 서명해 CRT(인증서)를 만든다.
 원래 CSR은 인증기관에게 인증서를 발급받기위한 ASN.1형식의 파일이지만 RootCA를 자기 자신으로 했으므로 자기 자신에게 서명을 받아 인증서를 만든다.
 
-![그림]({{ site.url }}/images/img/blockchain-cryptography/ssc3.png)
+![그림]({{ site.url }}/assets/images/img/blockchain-cryptography/ssc3.png)
 
 위 명령이 성공적으로 수행되면 서명이 됬다고 출력 후 RootCA의 Private Key의 비밀번호를 입력하라고 나온다. 성공적으로 수행되면 RootCA의 CRT가 생성이 끝난다.
 

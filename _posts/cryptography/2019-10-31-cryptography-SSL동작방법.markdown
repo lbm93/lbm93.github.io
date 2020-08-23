@@ -47,7 +47,7 @@ SSL은 암호화된 데이터를 전송하기 위하여 공개키와 대칭키�
 때문에 보안의 문제가 발생한다. 그래서 SSL은 공개키와 대칭키의 장점을 혼합한 방식을 사용한다. 그 핸드쉐이크 단계에서 클라이언트와 서버가 통신하는 과정을 순서대로 살펴보자.  
 
 
-![그림]({{ site.url }}/assetsimages/img/blockchain-cryptography/ssl동작방법.png)
+![그림]({{ site.url }}/assets/images/img/blockchain-cryptography/ssl동작방법.png)
 
 1. 먼저 클라이언트가 서버에게 접속하는 단계를 “client hello”라고 한다. 이때 클라이언트가 서버에게 주는 정보는 다음과 같다.
 

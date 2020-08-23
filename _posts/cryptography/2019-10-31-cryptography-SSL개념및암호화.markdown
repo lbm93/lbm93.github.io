@@ -32,7 +32,7 @@ SSL(Secure Socket Layer) Protocol은 NetScape사에서 웹서버와 웹 브라�
 SSL은 웹서버와 웹 브라우저 사이의 보안을 강화화기 위한 기술로 사용된다.  
 즉 웹서버와 웹 브라우저가 통신을 위해 사용하는 HTTP 프로토콜을 강화한 것이 바로 HTTPS이다.이 HTTP뒤에 붙은 S가 SSL이란 말이다.  그렇다면 이 SSL이 어떻게 생겼는지 확인해 보자.
 
-<center>![그림](/assets/images/img/blockchain-cryptography/sslarchitecture.png)</center>
+![그림](/assets/images/img/blockchain-cryptography/sslarchitecture.png)
 
 
 네트워크를 공부해본 사람은 딱 보면 알 것이다.  
