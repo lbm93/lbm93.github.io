@@ -16,10 +16,10 @@ tags:
 **SSL이 인증서는 무엇인가 알아본다.**  
    
 # 목록    
-1. [**SSL-#1.SSL의 개념**](https://lbm93.github.io/development/cryptography/cryptography-SSL개념및암호화/)
-2. [**SSL-#2.SSL 인증서**](https://lbm93.github.io/development/cryptography/cryptography-SSL인증서/)
-3. [**SSL-#3.SSL에서의 SSC,CSR 개념**](https://lbm93.github.io/development/cryptography/cryptography-SSL(SSC,CSR)/)
-4. [**SSL-#4.SSL동작 방법**](https://lbm93.github.io/development/cryptography/cryptography-SSL동작방법/)  
+1. [**SSL-#1.SSL의 개념**](https://lbm93.github.io/cryptography/cryptography-SSL개념및암호화/)
+2. [**SSL-#2.SSL 인증서**](https://lbm93.github.io/cryptography/cryptography-SSL인증서/)
+3. [**SSL-#3.SSL에서의 SSC,CSR 개념**](https://lbm93.github.io/cryptography/cryptography-SSL(SSC,CSR)/)
+4. [**SSL-#4.SSL동작 방법**](https://lbm93.github.io/cryptography/cryptography-SSL동작방법/)  
   
 ---
 
