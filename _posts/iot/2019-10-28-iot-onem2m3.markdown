@@ -1,19 +1,8 @@
 ---
-layout: article
-title: "oneM2M Architecture Model"
-date: 2019-10-28 18:00:32 +0900
-categories: [development, iot]
-# description: "웹 통신 프로토콜인 URL, HTTP, SMTP, MIME, FTP 을 정리"
-excerpt: "oneM2M 모델에 대하여 알아본다."
-image:
-  teaser: posts/onem2m/oneM2M.png
-  credit: oneM2M
-  creditlink: 
-  #url to their site or licensing
-locale: "ko_KR"
-# 리플 옵션
-comments: true
-tags:
+title: "oneM2M의 이해 [3탄] "
+date: 2019-10-28 20:00:00 -0900
+categories: [iot]
+tags: 
 - iot
 - internet of things
 - oneM2M
@@ -21,7 +10,16 @@ tags:
 - Mobius
 - nCube
 ---
-{% include toc.html %}
+
+**oneM2M Architecture Model & Reference Point**  
+  
+# 목록    
+1. [**SSL-#1.SSL의 개념**](https://lbm93.github.io/development/cryptography/cryptography-SSL개념및암호화/)
+2. [**SSL-#2.SSL 인증서**](https://lbm93.github.io/development/cryptography/cryptography-SSL인증서/)
+3. [**SSL-#3.SSL에서의 SSC,CSR 개념**](https://lbm93.github.io/development/cryptography/cryptography-SSL(SSC,CSR)/)
+4. [**SSL-#4.SSL동작 방법**](https://lbm93.github.io/development/cryptography/cryptography-SSL동작방법/)  
+  
+---
 
 # oneM2M Architecture Model
 oneM2M 워킹 그룹 WG2에서는 oneM2M의 **네트워크 아키텍처**와 **아키텍처**를 구성하는 **엔티티(Entity) 및 공통 서비스 기능(CSF)**과 이를 제공하기 위한 공통 서비스 계층에서의 **레퍼런스 포인트(Reference Point)**를 정의함
@@ -30,7 +28,7 @@ oneM2M 워킹 그룹 WG2에서는 oneM2M의 **네트워크 아키텍처**와 **�
 
 # General Concepts
 
-![그림1](/images/img/iot-onem2m/3.PNG)
+![그림1](/assets/images/img/iot-onem2m/3.PNG)
 
 ```
 depicts the oneM2M Layered Model for supporting end-to-end (E2E) M2M Services.  
@@ -42,7 +40,7 @@ This layered model comprises three layers: Application Layer, Common Services La
 
 # Architecture Reference Model
 
-![그림1](/images/img/iot-onem2m/4.PNG)
+![그림1](/assets/images/img/iot-onem2m/4.PNG)
 위의 General Concepts를 참고하여 만들어진 기능 아키텍처입니다.
 각각의 계층별 기능을 설명하겠습니다.
 

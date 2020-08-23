@@ -1,19 +1,8 @@
 ---
-layout: article
-title: "oneM2M 표준의 이해"
-date: 2019-10-28 18:00:32 +0900
-categories: [development, iot]
-# description: "웹 통신 프로토콜인 URL, HTTP, SMTP, MIME, FTP 을 정리"
-excerpt: "oneM2M이 뭔지 알아보기 1탄"
-image:
-  teaser: posts/onem2m/oneM2M.png
-  credit: oneM2M
-  creditlink: 
-  #url to their site or licensing
-locale: "ko_KR"
-# 리플 옵션
-comments: true
-tags:
+title: "oneM2M의 이해 [1탄] "
+date: 2019-10-28 20:00:00 -0900
+categories: [iot]
+tags: 
 - iot
 - internet of things
 - oneM2M
@@ -21,12 +10,21 @@ tags:
 - Mobius
 - nCube
 ---
-{% include toc.html %}
+
+**oneM2M의 개요와 워킹 그룹**  
+   
+# 목록    
+1. [**SSL-#1.SSL의 개념**](https://lbm93.github.io/development/cryptography/cryptography-SSL개념및암호화/)
+2. [**SSL-#2.SSL 인증서**](https://lbm93.github.io/development/cryptography/cryptography-SSL인증서/)
+3. [**SSL-#3.SSL에서의 SSC,CSR 개념**](https://lbm93.github.io/development/cryptography/cryptography-SSL(SSC,CSR)/)
+4. [**SSL-#4.SSL동작 방법**](https://lbm93.github.io/development/cryptography/cryptography-SSL동작방법/)  
+  
+---
 
 # oneM2M이란?
 oneM2M은 에너지, 교통, 국방 공공서비스 등 산업별로 종속적이고 폐쇄적으로 운영되는, 파편화된 서비스 플랫폼 구조를 벗어나 응용 서비스 인프라(플랫폼) 환경을 통합하고 공유하기 위한 사물 인터넷 공동 서비스 플랫폼 개발을 위해 발족된 표준화 단체이다.
 
-![그림1](/images/img/iot-onem2m/1.PNG)
+![그림1](/assets/images/img/iot-onem2m/1.PNG)
 
 위의 그림을 보시면 종래 사물인터넷 서비스들은 각각의 애플리케이션이 구동되기 위한 각각의 서버 플랫폼이 존재 했었지만 `oneM2M 기반 서버 플랫폼을 만들고나서는 하나의 서버 플랫폼에서 여러 개의 서비스 애플리케이션이 구동하게 된다.`
 
@@ -35,7 +33,7 @@ oneM2M은 에너지, 교통, 국방 공공서비스 등 산업별로 종속적�
 # oneM2M의 기술 워킹 그룹
 oneM2M의 기술 워킹 그룹은 6개로 나뉘어 있습니다.
 
-![그림2](/images/img/iot-onem2m/2.PNG)
+![그림2](/assets/images/img/iot-onem2m/2.PNG)
 
 - 요구 사항을 다루는 Requirement(WG1)
 

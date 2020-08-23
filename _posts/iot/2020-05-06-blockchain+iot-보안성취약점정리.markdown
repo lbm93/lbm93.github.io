@@ -1,34 +1,19 @@
 ---
-layout: article
-title: "Block Chain + iot 보안성 취약점"
-date: 2020-05-06 18:00:32 +0900
-categories: [blockchain&iot]
-# description: “<블록체인 기반의 iot 보안 취약점 - 박현정, 양혜임, 전정훈 (동국여자대학교)>"
-excerpt: "Block Chain과 iot 를 결합했을때 발생하는 보안 취약점에 대하여 정리"
-image:
-  teaser: posts/blockchain/blockchain+iot.jpeg
-  credit: 
-  creditlink: 
-  #url to their site or licensing
-locale: “ko_KR”
-# 리플 옵션
-comments: true
-tags:
-- blockchain
-- 블록체인
-- blockchain client
-- 블록체인 클라이언트
-- geth
-- 게스
-- Geth 환경설정
-- solidity
-- 솔리디티
-- smartcontract
-- 스마트컨트랙트
+title: "Blockchain + IOT의 보안성 취약점"
+date: 2019-10-28 20:00:00 -0900
+categories: [iot]
+tags: 
 - iot
-- Blockchain+iot
+- internet of things
+- oneM2M
+- iot 표준
+- Mobius
+- nCube
+- blockchain
 ---
-{% include toc.html %}
+
+**본 포스팅은 블록체인 기반의 IOT 보안 취약점 - 박현정,양혜임,전정훈 (동국여자대학교)를 정리한 포스팅임**  
+  
 
 # 시작하기 앞서
 이 포스팅에서는 block Chain 시스템과 iot 시스템을 결합했을 때 발생하는 보안 취약점에 대하여 정리한 문서이며 참고 문헌의 논문을 참조하였다.  

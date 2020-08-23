@@ -1,19 +1,8 @@
 ---
-layout: article
-title: "oneM2M Architecture Aspect"
-date: 2019-10-28 18:00:32 +0900
-categories: [development, iot]
-# description: "웹 통신 프로토콜인 URL, HTTP, SMTP, MIME, FTP 을 정리"
-excerpt: "oneM2M를 구성하는 여러가지 Node들을 알아본다."
-image:
-  teaser: posts/onem2m/oneM2M.png
-  credit: oneM2M
-  creditlink: 
-  #url to their site or licensing
-locale: "ko_KR"
-# 리플 옵션
-comments: true
-tags:
+title: "oneM2M의 이해 [4탄] "
+date: 2019-10-28 20:00:00 -0900
+categories: [iot]
+tags: 
 - iot
 - internet of things
 - oneM2M
@@ -21,10 +10,19 @@ tags:
 - Mobius
 - nCube
 ---
-{% include toc.html %}
+
+**Configurations Supported by oneM2M Architecture**  
+  
+# 목록    
+1. [**SSL-#1.SSL의 개념**](https://lbm93.github.io/development/cryptography/cryptography-SSL개념및암호화/)
+2. [**SSL-#2.SSL 인증서**](https://lbm93.github.io/development/cryptography/cryptography-SSL인증서/)
+3. [**SSL-#3.SSL에서의 SSC,CSR 개념**](https://lbm93.github.io/development/cryptography/cryptography-SSL(SSC,CSR)/)
+4. [**SSL-#4.SSL동작 방법**](https://lbm93.github.io/development/cryptography/cryptography-SSL동작방법/)  
+  
+---
 
 # Configurations Supported by oneM2M Architecture
-![그림1](/images/img/iot-onem2m/5.PNG)
+![그림1](/assets/images/img/iot-onem2m/5.PNG)
 위 그림은 oneM2M의 전체적인 구조를 보여줍니다.  
 보시면 각각의 상자를 노드라고 부릅니다. oneM2M에서 노드는 다음과 같이 의미합니다.
 

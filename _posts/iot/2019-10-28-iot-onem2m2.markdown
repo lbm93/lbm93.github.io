@@ -1,19 +1,8 @@
 ---
-layout: article
-title: "oneM2M Release1,2"
-date: 2019-10-28 18:00:32 +0900
-categories: [development, iot]
-# description: "웹 통신 프로토콜인 URL, HTTP, SMTP, MIME, FTP 을 정리"
-excerpt: "oneM2M의 Release 버전들을 알아본다."
-image:
-  teaser: posts/onem2m/oneM2M.png
-  credit: oneM2M
-  creditlink: 
-  #url to their site or licensing
-locale: "ko_KR"
-# 리플 옵션
-comments: true
-tags:
+title: "oneM2M의 이해 [2탄] "
+date: 2019-10-28 20:00:00 -0900
+categories: [iot]
+tags: 
 - iot
 - internet of things
 - oneM2M
@@ -21,7 +10,16 @@ tags:
 - Mobius
 - nCube
 ---
-{% include toc.html %}
+
+**oneM2M Release1**  
+   
+# 목록    
+1. [**SSL-#1.SSL의 개념**](https://lbm93.github.io/development/cryptography/cryptography-SSL개념및암호화/)
+2. [**SSL-#2.SSL 인증서**](https://lbm93.github.io/development/cryptography/cryptography-SSL인증서/)
+3. [**SSL-#3.SSL에서의 SSC,CSR 개념**](https://lbm93.github.io/development/cryptography/cryptography-SSL(SSC,CSR)/)
+4. [**SSL-#4.SSL동작 방법**](https://lbm93.github.io/development/cryptography/cryptography-SSL동작방법/)  
+  
+---
 
 # oneM2M Release1
 - Release1 에서는 oneM2M 플랫폼이 제공하는 기능을 공통 서비스 기능 (CSF:Common Service Function)으로 정의함.
