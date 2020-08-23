@@ -13,11 +13,12 @@ tags:
 
 **oneM2M Architecture Model & Reference Point**  
   
+  
 # 목록    
-1. [**SSL-#1.SSL의 개념**](https://lbm93.github.io/development/cryptography/cryptography-SSL개념및암호화/)
-2. [**SSL-#2.SSL 인증서**](https://lbm93.github.io/development/cryptography/cryptography-SSL인증서/)
-3. [**SSL-#3.SSL에서의 SSC,CSR 개념**](https://lbm93.github.io/development/cryptography/cryptography-SSL(SSC,CSR)/)
-4. [**SSL-#4.SSL동작 방법**](https://lbm93.github.io/development/cryptography/cryptography-SSL동작방법/)  
+1. [**oneM2M의 이해 [1탄]-#1.oneM2M의 개요와 워킹 그룹**](https://lbm93.github.io/iot/iot-onem2m1/)
+2. [**oneM2M의 이해 [2탄]-#2.oneM2M Release1**](https://lbm93.github.io/iot/iot-onem2m2/)
+3. [*oneM2M의 이해 [3탄]-#3.oneM2M Architecture Model & Reference Point**](https://lbm93.github.io/iot/iot-onem2m3/)
+4. [**oneM2M의 이해 [4탄]-#4.Configurations Supported by oneM2M Architecture**](https://lbm93.github.io/iot/iot-onem2m4/)  
   
 ---
 
