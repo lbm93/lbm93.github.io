@@ -1,0 +1,139 @@
+---
+title: "나만의 Token 만들기"
+date: 2020-05-27 20:00:00 -0900
+categories: [ethereum]
+tags: 
+- blockchain
+- 블록체인
+- blockchain client
+- 블록체인 클라이언트
+- geth
+- 게스
+- Geth 환경설정
+- solidity
+- 솔리디티
+- smartcontract
+- 스마트컨트랙트
+lastmod: 2020-09-01 19:00:00 -0900
+---
+
+**Ganache와 Metamask Remix를 이용해 SmartContract를 작성하여 token을 발행해보자**  
+
+---
+
+# 개발환경
+- Blockchain client : Ganache
+- Wallet : Metamask
+- Smart Contract : Remix
+
+
+# Block Chain RUN
+Ganache를 이용해 블록체인 네트워크를 구성한다. Ganache는 설치가 매우 간편하고 실행도 매우 간편하다.  
+아래 그림처럼 Ganache를 quickstart로 실행한다.
+
+![그림](/assets/images/img/blockchain-ethereum/Token생성/ganache.png)
+
+
+<u>*참고로 사용해보니 ganache 테스트 네트워크를 구성하긴 정말 편한데 잘 죽음...*</u>
+
+
+# MetaMask에 Account 등록
+Ganache에 있는 Account를 Metamask에 등록시켜야한다. 먼저 아래 그림 빨간줄 위에 키 모양을 눌러 맨 위에 Account의 Priavtekey를 얻는다.
+  
+![그림](/assets/images/img/blockchain-ethereum/Token생성/account_registration.png)
+
+
+Privatekey는 아래처럼 나오는데 저걸 복사한다.
+
+![그림](/assets/images/img/blockchain-ethereum/Token생성/account_privatekey.png)
+
+
+메타마스크를 실행하여 계정 가져오기를 누른다.
+
+![그림](/assets/images/img/blockchain-ethereum/Token생성/계정가져오기1.png)
+
+
+아까 복사한 Privatekey를 붙여 넣고 가져오기를 누른다.
+
+![그림](/assets/images/img/blockchain-ethereum/Token생성/계정가져오기2.png)
+
+
+아래 그림처럼 계정의 Public 주소와 Ganache에 있는 Public 주소가 맞는지 확인하고 이더도 확인하면 끝!
+
+![그림](/assets/images/img/blockchain-ethereum/Token생성/계정가져오기3.png)
+
+
+# Remix로 Smartcontract 작성
+정말로 간단한 토큰 발행을 위한 컨트랙트를 작성한다.
+
+```javascript
+pragma solidity ^0.5.8;         
+
+contract MyToken{
+    //1. 잔고를 확인할 mapping 변수
+    mapping(address => uint256) public balanceOf;
+    //2. 실수 단위를 정수로 바꿔주기 위한 변수(이더리움은 실수단위가 정수단위보다 가스 소모량이 큼)
+    uint256 public decimals;
+    //3. 토큰 이름 변수
+    string public symbol;
+    
+    //4. 생성자 
+    constructor(uint256 ininitialSupply) public{
+        //5. 컨트랙트 배포자가 발행할 토큰의 갯수
+        balanceOf[msg.sender]=ininitialSupply;
+        decimals=0;
+        //6. 토큰 이름
+        symbol="MYTN";
+    }
+    
+    //7. 토큰 전송 함수
+    function transfer(address _to, uint256 _value) public returns (bool success){
+        require(balanceOf[msg.sender]>=_value);
+        require(balanceOf[_to]+_value>=balanceOf[_to]);
+        //8. 보낼 사람의 토큰 총 갯수에서 보낼 토큰을 뺌
+        balanceOf[msg.sender]-=_value;
+        //9. 받을 사람의 토큰 총 갯수에 받을 토큰을 더함
+        balanceOf[_to]+=_value;
+        return true;
+    }
+}
+```
+
+위의 예제는 정말 간단한 토큰 생성 예제이다. 다음엔 ERC20 표준에 근거하는 토큰을 발행해보겠다. 이제 컨트랙트를 컴파일 후 배포해보자.
+
+
+# Contract 배포
+아래 그림처럼 ENVIRONMENT에 메타마스크 연결을 한다. 연결은 Injected Web3를 누르면 Metamask에 있는 Account와 연결이 된다. 그리고 연결이 되면 Remix에서 나오는 Account의 public address와 Metamask의 public address가 일치하는 지 본다.
+
+![그림](/assets/images/img/blockchain-ethereum/Token생성/컨트랙트배포.png)
+
+
+위 그림처럼 맞다면 아래 그림처럼 Deploy에 1000을 넣어서 Deploy해보자. 1000은 토큰의 갯수이다(위 Smartcontarct 코드 참조)
+
+![그림](/assets/images/img/blockchain-ethereum/Token생성/배포.png)
+
+
+# Token 등록
+컨트랙트가 제대로 deploy되었다면 Metamask에 Contract주소를 복사하여 토큰을 등록시켜 확인한다. 먼저 Metamask 하단에 토큰 등록을 누른다.  
+
+![그림](/assets/images/img/blockchain-ethereum/Token생성/토큰등록1.png)
+
+
+사용자 정의를 누르고 아까 복사한 Smartcontract의 주소를 넣으면 자동으로 토큰 이름이 하단에 나온다.  
+  
+![그림](/assets/images/img/blockchain-ethereum/Token생성/토큰등록2.png)
+
+
+발행한 토큰의 수가 맞는지 확인한다.    
+
+![그림](/assets/images/img/blockchain-ethereum/Token생성/토큰등록3.png)  
+
+
+짜잔! 발행한 1000개의 토큰을 내 계좌에서 볼 수 있다!!
+  
+![그림](/assets/images/img/blockchain-ethereum/Token생성/토큰등록4.png)
+
+
+# 마무리하며 
+다음에는 많은 사람들이 토큰 발행을 위해 참고하는 ERC20 표준을 보고 내 토큰을 발행해보고 다른 account로 토큰을 구매해보는 컨트랙트를 작성해 실행해본다. 이번 작업을 하며 배운건 일단 토큰은 이더리움 내부에서 사용하는 지역화폐같은 역할을 하는게 토큰이라는걸 알았고 토큰을 발행할때 decimal이라는 변수가 실수타입의 이더리움 단위를 정수로 바꿔줘 가스 소모량을 줄이는 역할을 한다는 사실을 배웠다. 
+
