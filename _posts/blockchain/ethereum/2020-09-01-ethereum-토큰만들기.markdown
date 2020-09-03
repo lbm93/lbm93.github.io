@@ -29,8 +29,7 @@ lastmod: 2020-09-01 19:00:00 -0900
 
 ---
 # Block Chain RUN
-Ganache를 이용해 블록체인 네트워크를 구성한다. Ganache는 설치가 매우 간편하고 실행도 매우 간편하다.  
-아래 그림처럼 Ganache를 quickstart로 실행한다.
+Ganache를 이용해 블록체인 네트워크를 구성한다. Ganache는 설치가 매우 간편하고 실행도 매우 간편하다. 아래 그림처럼 Ganache를 quickstart로 실행한다.
 
 ![그림](/assets/images/img/blockchain-ethereum/Token생성/ganache.png)
 
@@ -47,7 +46,7 @@ Ganache에 있는 Account를 Metamask에 등록시켜야한다. 먼저 아래 �
 
 Privatekey는 아래처럼 나오는데 저걸 복사한다.
 
-![그림](/assets/images/img/blockchain-ethereum/Token생성/account_privatekey.png)
+![그림](/assets/images/img/blockchain-ethereum/Token생성/privatekey.png)
 
 
 메타마스크를 실행하여 계정 가져오기를 누른다.
@@ -62,7 +61,7 @@ Privatekey는 아래처럼 나오는데 저걸 복사한다.
 
 아래 그림처럼 계정의 Public 주소와 Ganache에 있는 Public 주소가 맞는지 확인하고 이더도 확인하면 끝!
 
-![그림](/assets/images/img/blockchain-ethereum/Token생성/계정가져오기3.png)
+![그림](/assets/images/img/blockchain-ethereum/Token생성/계정가져오기3.png)
 
 
 
@@ -111,12 +110,12 @@ contract MyToken{
 # Contract 배포
 아래 그림처럼 ENVIRONMENT에 메타마스크 연결을 한다. 연결은 Injected Web3를 누르면 Metamask에 있는 Account와 연결이 된다. 그리고 연결이 되면 Remix에서 나오는 Account의 public address와 Metamask의 public address가 일치하는 지 본다.
 
-![그림](/assets/images/img/blockchain-ethereum/Token생성/컨트랙트배포.png)
+![그림](/assets/images/img/blockchain-ethereum/Token생성/컨트랙트배포.png)
 
 
 위 그림처럼 맞다면 아래 그림처럼 Deploy에 1000을 넣어서 Deploy해보자. 1000은 토큰의 갯수이다(위 Smartcontarct 코드 참조)
 
-![그림](/assets/images/img/blockchain-ethereum/Token생성/배포.png)
+![그림](/assets/images/img/blockchain-ethereum/Token생성/배포.png)
 
 
 
@@ -124,22 +123,22 @@ contract MyToken{
 # Token 등록
 컨트랙트가 제대로 deploy되었다면 Metamask에 Contract주소를 복사하여 토큰을 등록시켜 확인한다. 먼저 Metamask 하단에 토큰 등록을 누른다.  
 
-![그림](/assets/images/img/blockchain-ethereum/Token생성/토큰등록1.png)
+![그림](/assets/images/img/blockchain-ethereum/Token생성/토큰등록1.png)
 
 
 사용자 정의를 누르고 아까 복사한 Smartcontract의 주소를 넣으면 자동으로 토큰 이름이 하단에 나온다.  
   
-![그림](/assets/images/img/blockchain-ethereum/Token생성/토큰등록2.png)
+![그림](/assets/images/img/blockchain-ethereum/Token생성/토큰등록2.png)
 
 
 발행한 토큰의 수가 맞는지 확인한다.    
 
-![그림](/assets/images/img/blockchain-ethereum/Token생성/토큰등록3.png)  
+![그림](/assets/images/img/blockchain-ethereum/Token생성/토큰등록3.png)  
 
 
 짜잔! 발행한 1000개의 토큰을 내 계좌에서 볼 수 있다!!
   
-![그림](/assets/images/img/blockchain-ethereum/Token생성/토큰등록4.png)
+![그림](/assets/images/img/blockchain-ethereum/Token생성/토큰등록4.png)
 
 
 
