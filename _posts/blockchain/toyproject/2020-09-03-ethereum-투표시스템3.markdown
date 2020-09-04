@@ -1,0 +1,330 @@
+---
+title: "이더리움 기반 투표 시스템 만들기 [3탄]"
+date: 2020-09-03 20:00:00 -0900
+categories: [toyproject]
+tags: 
+- blockchain
+- 블록체인
+- blockchain client
+- 블록체인 클라이언트
+- geth
+- 게스
+- Geth 환경설정
+- solidity
+- 솔리디티
+- smartcontract
+- 스마트컨트랙트
+lastmod: 2020-09-03 19:00:00 -0900
+---
+
+**web3와 ABI를 이용해 투표 컨트랙트 실행**  
+
+
+
+# 목록    
+1. [이더리움 기반 투표 시스템 만들기 [1탄]](https://lbm93.github.io/toyproject/ethereum-%ED%88%AC%ED%91%9C%EC%8B%9C%EC%8A%A4%ED%85%9C1/#)
+2. [이더리움 기반 투표 시스템 만들기 [2탄]](https://lbm93.github.io/toyproject/ethereum-%ED%88%AC%ED%91%9C%EC%8B%9C%EC%8A%A4%ED%85%9C2/#)
+3. [이더리움 기반 투표 시스템 만들기 [3탄]](https://lbm93.github.io/toyproject/ethereum-%ED%88%AC%ED%91%9C%EC%8B%9C%EC%8A%A4%ED%85%9C3/#)
+
+
+---
+# html에서 동작할 스크립트 작성
+html에서 동작할 스크립트를 작성한다. web3 프레임워크를 이용해 블록체인 네트워크에 접속하고 remix에서 컨트랙트를 배포할 때 받은 ABI로 컨트랙트 함수를 실행 해 투표를 한다. 먼저 아래 그림은 remix에서 컨트랙트 배포 당시 받은 ABI 정보이다. ABI는 Application Binary Interce로 어플리케이션 단에서 컨트랙트 함수를 이용하기위한 바이너리 인터페이스이다.
+
+
+
+```
+[
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "candidate",
+				"type": "bytes32"
+			}
+		],
+		"name": "totalVotesFor",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "candidate",
+				"type": "bytes32"
+			}
+		],
+		"name": "validCandidate",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"name": "votesReceived",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "candidateList",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "candidate",
+				"type": "bytes32"
+			}
+		],
+		"name": "voteForCandidate",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"name": "candidateNames",
+				"type": "bytes32[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	}
+]
+```
+
+위 ABI를 스크립트에 넣어 스크립트를 완성시킨다.
+
+```javascript
+/*블록체인 네트워크 연결*/
+web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+
+var account;
+/*투표 컨트랙트를 이용 할 Account 정보 가져오기*/
+web3.eth.getAccounts().then((accounts) => {
+	console.log(accounts);
+ account = accounts[0];
+})
+
+/*배포한 컨트랙트의 ABI*/
+contract = new web3.eth.Contract([
+	{
+		"inputs": [
+			{
+				"internalType": "bytes32[]",
+				"name": "candidateNames",
+				"type": "bytes32[]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "candidate",
+				"type": "bytes32"
+			}
+		],
+		"name": "voteForCandidate",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "candidateList",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "candidate",
+				"type": "bytes32"
+			}
+		],
+		"name": "totalVotesFor",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "candidate",
+				"type": "bytes32"
+			}
+		],
+		"name": "validCandidate",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"name": "votesReceived",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]);
+/*컨트랙트 주소*/
+contract.options.address = "0x571B6A352363D1BAFE3AdA34dcB21097a737d7e1";
+
+/*Html에 있는 후보자 객체*/
+candidates = {"Anny": "candidate1", "Tony": "candidate2", "Hulk": "candidate3"}
+
+/*투표 컨트랙트 이용*/
+function voteForCandidate(candidate) {
+ candidateName = $("#candidate").val(); //Jquery를 이용해 html에서 candidate 태그 찾음, 선택한 지원자의 값을 가져옴(이름)
+ console.log(candidateName);	///선택한 후보자 이름 출력
+/*위에 있는 ABI중 투표 함수 실행*/
+//지원자 이름을 16진수로 변환 후 트랜잭션 발행 그리고 Promis로 동기처리
+ contract.methods.voteForCandidate(web3.utils.asciiToHex(candidateName)).send({from: account}).then((f) => {
+	//promis로 트랜잭션이 끝나면 여기로 들어옴
+	//지원자 아이디 변수에 지원자 객체의 값을 가져옴(candidate1,2,3 중 1개)
+	let div_id = candidates[candidateName];
+	//투표 받은 수를 얻기위한 트랜잭션 발행
+  	contract.methods.totalVotesFor(web3.utils.asciiToHex(candidateName)).call({from: account}).then((f) => {
+	   //마찬가지로 promis로 트랜잭션이 끝나면 여기로 들어옴
+	   //그리고 html에서 div_id에 해당하는 태그에 트랜잭션 결과 f(투표수)를 넣는다.
+		$("#" + div_id).html(f);
+  })
+ })
+}
+
+$(document).ready(function() {
+ var candidateNames = Object.keys(candidates); //["Anny","Tony","Hulk"]
+
+ for(var i=0; i<candidateNames.length; i++) {
+ let name = candidateNames[i];					//candidate1, candidate2, candidate3
+ let test = 9
+ contract.methods.totalVotesFor(web3.utils.asciiToHex(name)).call().then((test) => {
+  $("#" + candidates[name]).html(test);
+ })
+ }
+});
+
+```
+
+---
+# 투표하기
+마지막으로 투표를 해본다 먼저 투표 할 사람의 이름을 입력한다.
+
+
+![그림](/assets/images/img/blockchain-ethereum/toyproject/voting/투표1.png)
+
+
+
+그리고 투표를 누르면 숫자가 바뀌며 성공적으로 투표에 성공하게 된다.
+
+![그림](/assets/images/img/blockchain-ethereum/toyproject/voting/투표2.png)
+
+
+마지막으로 투표 트랜잭션을 Ganache에서 확인해본다.
+
+![그림](/assets/images/img/blockchain-ethereum/toyproject/voting/투표트랜잭션.png)
+
+
+---
+# 마무리하며
+지금까지 간단하게 이더리움 블록체인을 이용한 투표 시스템을 만들어보았다.
+
