@@ -1,0 +1,127 @@
+---
+title: "이더리움 기반 투표 시스템 만들기 [1탄]"
+date: 2020-09-03 20:00:00 -0900
+categories: [toyproject]
+tags: 
+- blockchain
+- 블록체인
+- blockchain client
+- 블록체인 클라이언트
+- geth
+- 게스
+- Geth 환경설정
+- solidity
+- 솔리디티
+- smartcontract
+- 스마트컨트랙트
+lastmod: 2020-09-03 19:00:00 -0900
+---
+
+**후보자 이름 변환 및 투표 SmartContract 배포**  
+
+
+
+# 목록    
+1. [이더리움 기반 투표 시스템 만들기 [1탄]](https://lbm93.github.io/ethereum/toyproject-투표시스템1/)
+2. [이더리움 기반 투표 시스템 만들기 [2탄]](https://lbm93.github.io/ethereum/toyproject-투표시스템2/)
+
+
+---
+
+# 개발환경
+- Blockchain client : Ganache
+- Wallet : Metamask
+- Smart Contract : Remix
+- Editor : Visual studio code
+
+
+---
+# 시스템 구상
+구상하는 시스템은 아래 그림과 같다 사용자는 웹사이트를 통해 투표 및 결과를 확인할 수 있으며 투표 정보는 블록체인에 저장된다.
+
+![그림](/assets/images/img/blockchain-ethereum/toyproject/voting/시나리오.png)
+
+
+---
+# 후보자 등록
+투표에 사용 될 후보자의 이름을 정하고 후보자의 이름을 byte32로 변환시켜야한다. 
+
+
+그 이유는 smartcontract는 문자열 비교가 불가능하기 때문에 byte32로 변환 후 비교한다. 
+
+
+문자열을 byte32로 변환 시켜 줄 프로그램이 필요한데.. 찾아보니 npm 패키지 중에서 **ethers** 라는 패키지가 있어 설치 후 "Anny, Tony, Hulk" 라는 3명의 후보자의 이름을 byte32로 변환했다.
+
+
+
+```javascript
+/*1. byte32<=>String 형 변환을 위한 패키지*/
+const ethers = require('ethers');
+
+/*2. 후보자 배열 */
+var candidates = new Array("Anny","Tony","Hulk");
+
+/*3. 후보자 이름 형 변환*/
+for(var i in candidates){
+	var name;
+	console.log(`변환 전 : ${candidates[i]}`);
+	name = ethers.utils.formatBytes32String(candidates[i]);
+	console.log(`변환 후 : ${name}`);
+}
+```
+
+
+![그림](/assets/images/img/blockchain-ethereum/toyproject/voting/후보자이름변환.png)
+
+
+위 그림처럼 이름을 byte32로 변환해서 사용하면 된다.
+
+
+---
+# 투표 SmartContract 작성 및 배포
+투표를 위한 smartcontract를 작성한다. 
+
+
+```javascript
+pragma solidity ^0.5.8;
+
+contract Voting {
+    //Key:후보자 , Value:투표 수
+    mapping (bytes32 => uint256) public votesReceived;
+    //후보자 리스트
+    bytes32[] public candidateList;
+    //컨트랙트 배포시 후보자 이름을 byte32형태로 받음
+    constructor(bytes32[] memory candidateNames) public {
+        
+        candidateList = candidateNames;
+        
+    }
+    //최종 투표 수를 요청하는 call
+    function totalVotesFor(bytes32 candidate) public view returns(uint256) {
+       require(validCandidate(candidate));
+       return votesReceived[candidate];
+    }
+    //후보자에게 표를 던지는 함수
+    function voteForCandidate(bytes32 candidate) public {
+        require(validCandidate(candidate));
+        votesReceived[candidate] +=1;
+    }
+    //후보자가 아닌 사람을 판별하는 함수
+    function validCandidate(bytes32 candidate) public view returns(bool) {
+        for(uint i =0; i< candidateList.length; i++){
+            if(candidateList[i] ==candidate) {
+                return true;
+            }
+        }   
+    }
+}
+```
+
+코드 설명은 주석으로 간단하게 달아 놓았다. 이 컨트랙트를 배포할 때 위에서 생성 한 후보자 3명의 byte32 정보를 넣어서 배포하면 된다.
+
+
+![그림](/assets/images/img/blockchain-ethereum/toyproject/voting/컨트랙트배포.png)
+
+
+
+여기까지가 블록체인 투표시스템 Smartcontract를 만든 것이다. 이제 사용자가 이 시스템을 이용할 수 있게 인터페이스를 만들어야한다. [2탄]에서는 인터페이스를 html,js를 이용해 만든다.

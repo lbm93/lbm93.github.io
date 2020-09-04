@@ -1,0 +1,99 @@
+---
+title: "이더리움 기반 투표 시스템 만들기 [2탄]"
+date: 2020-09-03 20:00:00 -0900
+categories: [toyproject]
+tags: 
+- blockchain
+- 블록체인
+- blockchain client
+- 블록체인 클라이언트
+- geth
+- 게스
+- Geth 환경설정
+- solidity
+- 솔리디티
+- smartcontract
+- 스마트컨트랙트
+lastmod: 2020-09-03 19:00:00 -0900
+---
+
+**투표 인터페이스 만들기**  
+
+
+
+# 목록    
+1. [이더리움 기반 투표 시스템 만들기 [1탄]](https://lbm93.github.io/ethereum/toyproject-투표시스템1/)
+2. [이더리움 기반 투표 시스템 만들기 [2탄]](https://lbm93.github.io/ethereum/toyproject-투표시스템2/)
+
+
+
+---
+
+# 개발환경
+- Blockchain client : Ganache
+- Wallet : Metamask
+- Smart Contract : Remix
+- Editor : Visual studio code
+
+
+---
+# html을 통한 인터페이스 만들기
+우리는 사용자가 웹에서 투표를 할 수 있도록 인터페이스를 만들어준다.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Blockchain Based Voting System</title>
+ <link href='https://fonts.googleapis.com/css?family=Open Sans:400,700' rel='stylesheet' type='text/css'>
+ <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+</head>                                                 <!--페이지의 머리 부분-->
+<body class="container">
+ <h1>Simple Voting Application</h1>
+ <div class="table-responsive">                         <!-- 레이아웃을 나누는 태그 divide -->
+  <table class="table table-bordered">                  <!-- 테이블을 만드는 태그 -->
+   <thead>                                              <!-- 테이블 헤드 태그 -->
+    <tr>                                                <!-- 테이블의 행을 만드는 태그 -->
+     <th bgcolor="white" >Candidate</th>
+     <th bgcolor="white" >Votes</th>
+    </tr>
+   </thead>
+   <tbody>                                              <!-- 테이블 바디 태그-->
+    <tr>
+     <td bgcolor="yellow" align="center">Anny</td>                                      <!-- 테이블의 열을 만드는 태그 -->
+     <td id="candidate1"></td>                         <!--id는 고유한 성격을 나타낼때 쓰는 태그-->
+    </tr>
+    <tr>
+     <td bgcolor="yellow" align="center">Tonny</td>
+     <td id="candidate2"></td>
+    </tr>
+    <tr>
+     <td bgcolor="yellow" align="center">Hulk</td>
+     <td id="candidate3"></td>
+    </tr>
+   </tbody>
+  </table>
+ </div>
+ <div class="table responsive"></div>
+ <input type="text" id="candidate" />
+ <a href="#" onclick="voteForCandidate()" class="btn btn-primary">Vote</a>
+</body>
+<script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.37/dist/web3.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+<script src="./index.js"></script>
+</html>
+```
+
+위 코드를 보면 특별한 점은 따로 없고 javascript를 사용하기 위해 필요한 web3, jquery, 내가 작성 할 index.js 를 추가하였다.
+
+
+
+위 소스를 실행해보면 다음과 같은 화면이 나온다. 
+
+
+![그림](/assets/images/img/blockchain-ethereum/toyproject/voting/인터페이스.png)
+
+
+
+---
+다음 3탄에서는 마지막으로 이 html페이지에서 기능을 맡아 줄 index.js를 만들어본다.
