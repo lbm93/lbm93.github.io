@@ -135,7 +135,19 @@ contract TestToken is StandardToken {
 }
 ```
 
-위 코드를 보면 맨 위에 Token이라는 contract가 interface처럼 형성되어있다. 그리고 StandardToken, TestToken의 contract가 있다. StandardToken은 Token을 상속받고 TestToken은 StandardToken을 상속받는다. 그리고 TestToken에는 생성자가 있으므로 배포시 가장 먼저 실행되는 컨트랙트는 TestToken이 된다. 생성자를 보면 공급할 토큰의 총 량이 1000000000000000000000가 있고 토큰의 이름은  TTN 토큰이 된다. 배포자가 컨트랙트 배포시 생성자가 실행되며 토큰이 생성되고 다른 Account들은 이름이 없는 fallback 함수로 토큰을 구매하게 된다.
+위 코드를 보면 맨 위에 Token이라는 contract가 interface처럼 형성되어있다. 
+
+
+그리고 StandardToken, TestToken의 contract가 있다. StandardToken은 Token을 상속받고 TestToken은 StandardToken을 상속받는다. 
+
+
+그리고 TestToken에는 생성자가 있으므로 배포시 가장 먼저 실행되는 컨트랙트는 TestToken이 된다. 
+
+
+생성자를 보면 공급할 토큰의 총 량이 1000000000000000000000가 있고 토큰의 이름은  TTN 토큰이 된다. 
+
+
+배포자가 컨트랙트 배포시 생성자가 실행되며 토큰이 생성되고 다른 Account들은 이름이 없는 fallback 함수로 토큰을 구매하게 된다.
 
 
 
