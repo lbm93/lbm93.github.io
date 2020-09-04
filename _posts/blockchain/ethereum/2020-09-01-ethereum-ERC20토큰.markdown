@@ -1,5 +1,5 @@
 ---
-title: "ERC20 토큰 만들기"
+title: "ERC20 Token 만들기"
 date: 2020-05-27 20:00:00 -0900
 categories: [ethereum]
 tags: 
@@ -14,7 +14,7 @@ tags:
 - 솔리디티
 - smartcontract
 - 스마트컨트랙트
-lastmod: 2020-09-02 19:00:00 -0900
+lastmod: 2020-09-01 19:00:00 -0900
 ---
 
 **많은 토큰들이 ERC20을 기반으로 만들어지는데 나도 만들어 보았다.**  
