@@ -11,7 +11,6 @@ tags:
 - nCube
 ---
 
-# 요약
 이 포스트는 Mobius(server)에서 openssl을 이용하여 SSC를 통해 자체 인증서를 생성하고 nCube(client)에서 측정되는 온,습도 값이 Mobius로 넘어갈때 SSL을 enable 했을때와 dissable 했을때의 패킷을 분석해 SSL이 정상적으로 적용이 되었는지 테스트하는 내용이다.<br>
 
 
