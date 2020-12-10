@@ -18,12 +18,10 @@ posts:
         url: /categories/#bitcoin
       - title: "Ethereum"
         url: /categories/#ethereum
-      - title: "Toyproject"
-        url: /categories/#toyproject
-  - title: "Cryptography"
-    url: /categories/#Cryptography
   - title: "IOT"
-    url: /categories/#iot
+    children:
+      - title: "Mobius"
+        url: /categories/#mobius
   - title: "Web"
     url: /categories/#web
   - title: "Languages"

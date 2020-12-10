@@ -12,8 +12,7 @@ tags:
 ---
 
 **oneM2M Release1,2**  
-  
-  
+
 # 목록    
 1. [**oneM2M의 이해 [1탄]-#1.oneM2M의 개요와 워킹 그룹**](https://lbm93.github.io/iot/iot-onem2m1/)
 2. [**oneM2M의 이해 [2탄]-#2.oneM2M Release1**](https://lbm93.github.io/iot/iot-onem2m2/)
